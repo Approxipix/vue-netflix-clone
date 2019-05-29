@@ -1,0 +1,38 @@
+@import "../../assets/scss/helpers/mixins";
+
+.Header {
+  position: absolute;
+  top: 0;
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-template-areas:
+    "logo actions";
+  width: 100%;
+  padding: 1rem 1.5rem;
+  z-index: 100;
+  @include lg {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      ". logo actions";
+  }
+  &__logo {
+    grid-area: logo;
+    width: 5.6rem;
+    height: 1.7rem;
+    fill: #e50914;
+    @include sm {
+      width: 10.5rem;
+      height: 2.9rem;
+    }
+    @include lg {
+      margin: 0 auto;
+    }
+  }
+
+  &__actions {
+    grid-area: actions;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  //&.no-scroll {
+  //  overflow-y: hidden;
+  //}
+}
+
+body {
+  font-family: 'HelveticaNeue', Helvetica, Arial ,sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

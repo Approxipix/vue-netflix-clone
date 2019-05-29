@@ -1,0 +1,29 @@
+@import "../helpers/mixins";
+
+.btn {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  padding: .3rem .9rem;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  border-radius: .18rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color .1s ease-out;
+  &--red {
+    background-color: #dc0913;
+    box-shadow: 0 1px 0 rgba(0,0,0,.45);
+    &:hover {
+      background: #f40612;
+    }
+  }
+  &:not(:last-child) {
+    margin-right: .5rem;
+  }
+  @include sm {
+    padding: .4rem 1.1rem;
+  }
+}
