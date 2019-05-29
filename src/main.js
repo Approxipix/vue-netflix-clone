@@ -1,12 +1,28 @@
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
-import store from "./store";
+import router from "./router/index";
+import { store } from "./store/index";
+import * as firebase from 'firebase';
+import './index.scss'
 
 Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  created () {
+    firebase.initializeApp({
+      apiKey: "AIzaSyCZCvqieLgtEPMmn8jdl79Aandh35MH_GQ",
+      authDomain: "vue-netflix-clone.firebaseapp.com",
+      databaseURL: "https://vue-netflix-clone.firebaseio.com",
+      projectId: "vue-netflix-clone",
+      storageBucket: "vue-netflix-clone.appspot.com",
+    })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
+  }
 }).$mount("#app");
