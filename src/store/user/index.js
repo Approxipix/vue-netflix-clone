@@ -1,4 +1,5 @@
 import * as firebase from "firebase";
+import router from '../../router/index'
 
 export default {
   state: {
@@ -10,6 +11,43 @@ export default {
     }
   },
   actions: {
+    recoverPassword({ commit }, payload) {
+      commit("setLoading", true);
+      commit("clearError");
+      firebase
+        .auth()
+        .sendPasswordResetEmail(payload.email)
+        .then(user => {
+          commit("setLoading", false);
+          router.push('/recover-password/success')
+        })
+        .catch(error => {
+          commit("setLoading", false);
+          commit("setError", error);
+        });
+    },
+    recover({ commit }, payload) {
+      commit("setLoading", true);
+      commit("clearError");
+      firebase
+        .auth()
+        .confirmPasswordReset(payload.code, payload.newPassword)
+        .then(user => {
+          commit("setLoading", false);
+          router.push('/recover-password/success')
+          const newUser = {
+            id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            photoUrl: user.photoURL
+          };
+          commit("setUser", newUser);
+        })
+        .catch(error => {
+          commit("setLoading", false);
+          commit("setError", error);
+        });
+    },
     signUserUp({ commit }, payload) {
       commit("setLoading", true);
       commit("clearError");

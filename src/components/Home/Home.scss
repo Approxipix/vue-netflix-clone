@@ -26,64 +26,67 @@
     background-image: linear-gradient(to bottom,rgba(0,0,0,.6) 50%,rgba(0,0,0,0) 95%);
     @include md {
       height: 100%;
-      background: rgba(0,0,0,.3);
-      background-image:
-        linear-gradient(0deg,rgba(0,0,0,0) 50%,rgba(0,0,0,.5) 100%),
-        radial-gradient(50% 120%,rgba(0,0,0,0) 50%,rgba(0,0,0,.7) 100%);
+      background: rgba(0, 0, 0, .3) linear-gradient(0deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .5) 100%),
+      radial-gradient(50% 120% at 0 0, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .7) 100%);
     }
   }
-  &__container {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    width: 100%;
-    text-align: center;
-    transform: translateX(-50%);
-    z-index: 15;
-    @include md {
-      top: 30%;
-      bottom: auto;
+}
+
+.Home {
+  .Home {
+    &__container {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      width: 100%;
+      text-align: center;
+      transform: translateX(-50%);
+      z-index: 15;
+      @include md {
+        top: 30%;
+        bottom: auto;
+      }
     }
-  }
-  &__title {
-    position: relative;
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-    @include sm {
+    &__title {
+      position: relative;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      @include sm {
+        margin-bottom: 1.5rem;
+        font-size: 3.75rem;
+      }
+      @include lg {
+        margin-bottom: 2.2rem;
+        font-size: 5rem;
+      }
+    }
+    &__subtitle {
       margin-bottom: 1.5rem;
-      font-size: 3.75rem;
+      font-weight: normal;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      @include sm {
+        margin-bottom: 2.5rem;
+        font-size: 1.5rem;
+      }
+      @include lg {
+        margin-bottom: 2.6rem;
+        font-size: 1.8rem;
+      }
     }
-    @include lg {
-      margin-bottom: 2.2rem;
-      font-size: 5rem;
-    }
-  }
-  &__subtitle {
-    margin-bottom: 1.5rem;
-    font-weight: normal;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    @include sm {
-      margin-bottom: 2.5rem;
-      font-size: 1.5rem;
-    }
-    @include lg {
-      margin-bottom: 2.6rem;
-      font-size: 1.8rem;
-    }
-  }
-  &__button {
-    padding: 1rem 1.5rem;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    @include sm {
-      padding: 1.3rem 3.5rem;
-      font-size: 1.5rem;
-    }
-    @include lg {
-      padding: 1.5rem 3.75rem;
-      font-size: 1.8rem;
+    &__btn {
+      padding: 1rem 1.5rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      @include sm {
+        padding: 1.3rem 3.5rem;
+        font-size: 1.5rem;
+      }
+      @include lg {
+        padding: 1.5rem 3.75rem;
+        font-size: 1.8rem;
+      }
     }
   }
 }
