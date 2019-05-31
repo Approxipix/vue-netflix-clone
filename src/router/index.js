@@ -1,36 +1,54 @@
-import Vue from "vue";
-import Router from "vue-router";
-const Home = () => import("@/components/Home/Home");
-const Profile = () => import("@/components/User/Profile");
-const SignUp = () => import("@/components/SignUp/SignUp");
-const SignIn = () => import("@/components/SignIn/SignIn");
-import AuthGuard from "./auth-guard";
+import firebase from 'firebase';
+import Vue from 'vue';
+import Router from 'vue-router';
+
+import Home from '@/components/Home/Home';
+import SignIn from '@/components/SignIn/SignIn';
+import SignUp from '@/components/SignUp/SignUp';
+import Profile from '@/components/User/Profile';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
+  mode: "history",
   routes: [
     {
-      path: "/",
-      name: "Home",
+      path: '*',
+      redirect: '/',
+    },
+    {
+      path: '/',
+      name: 'Home',
       component: Home
     },
     {
-      path: "/profile",
-      name: "Profile",
-      component: Profile,
-      // beforeEnter: AuthGuard
+      path: '/sign-in',
+      name: 'SignIn',
+      component: SignIn
     },
     {
-      path: "/sign-up",
-      name: "SignUp",
+      path: '/sign-up',
+      name: 'SignUp',
       component: SignUp
     },
     {
-      path: "/sign-in",
-      name: "SignIn",
-      component: SignIn
+      path: '/profile',
+      name: 'Profile',
+      component: Profile,
+      meta: {
+        requiresAuth: true
+      }
     }
-  ],
-  mode: "history"
+  ]
 });
+
+router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  if (requiresAuth && !currentUser) next('sign-in');
+  else if (!requiresAuth && currentUser) next('profile');
+  else next();
+});
+
+export default router;
