@@ -1,0 +1,13 @@
+.link {
+  font-size: 1rem;
+  color: #b3b3b3;
+  &:hover {
+    text-decoration: underline;
+  }
+  &--white {
+    color: #fff;
+  }
+  &--s {
+    font-size: .81rem;
+  }
+}

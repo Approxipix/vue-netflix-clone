@@ -1,0 +1,36 @@
+.input {
+  width: 100%;
+  border-radius: .25rem;
+  background: #333;
+  border: 0;
+  color: #fff;
+  font-size: 1rem;
+  padding: 1rem 1.25rem 0;
+  height: 3rem;
+  outline: none;
+  &::placeholder {
+    color: transparent;
+  }
+  &__filled,
+  &:focus {
+    background: #454545;
+    + .input__placeholder {
+      top: .7rem;
+      font-size: .68rem;
+    }
+  }
+  &__wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+    border-radius: .25rem;
+  }
+  &__placeholder {
+    position: absolute;
+    font-size: 1rem;
+    top: 50%;
+    left: 1.25rem;
+    color: #8c8c8c;
+    transition: font .1s ease,top .1s ease,transform .1s ease;
+    transform: translateY(-50%);
+  }
+}
