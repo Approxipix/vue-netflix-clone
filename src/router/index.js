@@ -1,7 +1,6 @@
 import * as firebase from 'firebase';
 import Vue from 'vue';
 import Router from 'vue-router';
-
 import Home from '@/components/Home/Home';
 import SignIn from '@/components/SignIn/SignIn';
 import SignUp from '@/components/SignUp/SignUp';

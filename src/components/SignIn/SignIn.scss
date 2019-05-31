@@ -1,44 +1,5 @@
 .SignIn {
-  position: relative;
-  min-height: 100vh;
-  padding: 1rem 1.5rem;
-  background-position: left;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,.4);
-  }
-}
-
-.SignIn {
   .SignIn {
-    &__container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      padding: 3.75rem 4.25rem 2.5rem;
-      background-color: rgba(0,0,0,.75);
-      min-width: 28rem;
-      transform: translate(-50%, -50%);
-      border-radius: .25rem;
-    }
-    &__title {
-      color: #fff;
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 1.6rem;
-    }
-    &__btn {
-      width: 100%;
-      margin-top: 1.5rem;
-      margin-bottom: .5rem;
-      padding: .9rem;
-      font-weight: bold;
-    }
     &__social {
       &-list {
         margin-top: 3rem;

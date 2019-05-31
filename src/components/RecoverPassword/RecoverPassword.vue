@@ -1,7 +1,7 @@
 <template>
-  <div class="SignUp bg">
-    <div class="SignUp__container">
-      <h1 class="SignUp__title">
+  <div class="tile bg">
+    <div class="tile__container">
+      <h1 class="tile__title">
         Recover Password
       </h1>
       <form @submit.prevent="onSignup">
@@ -21,7 +21,7 @@
         </div>
         <button
           type="submit"
-          class="btn btn--red SignUp__btn"
+          class="btn btn--red form__btn"
           :disabled="loading"
         >
           Send

@@ -1,7 +1,7 @@
 <template>
-  <div class="SignUp bg">
-    <div class="SignUp__container">
-      <h1 class="SignUp__title">
+  <div class="tile bg">
+    <div class="tile__container">
+      <h1 class="tile__title">
         Recover password
       </h1>
       <p>

@@ -1,20 +1,7 @@
 .SignUp {
-  position: relative;
-  min-height: 100vh;
-  padding: 1rem 1.5rem;
-  background-position: left;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,.4);
+  .bg {
+    background-position: left;
   }
-}
-
-.SignUp {
   .SignUp {
     &__container {
       position: absolute;

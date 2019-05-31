@@ -1,0 +1,30 @@
+.tile {
+  position: relative;
+  min-height: 100vh;
+  padding: 1rem 1.5rem;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.4);
+  }
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 28rem;
+    transform: translate(-50%, -50%);
+    padding: 3.75rem 4.25rem 2.5rem;
+    background-color: rgba(0,0,0,.75);
+    border-radius: .25rem;
+  }
+  &__title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.6rem;
+  }
+}

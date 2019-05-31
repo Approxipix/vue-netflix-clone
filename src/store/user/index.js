@@ -34,7 +34,7 @@ export default {
         .confirmPasswordReset(payload.code, payload.newPassword)
         .then(user => {
           commit("setLoading", false);
-          router.push('/recover-password/success')
+          router.push('/profile');
           const newUser = {
             id: user.uid,
             name: user.displayName,
@@ -144,21 +144,21 @@ export default {
         photoUrl: payload.photoURL
       });
     },
-    resetPasswordWithEmail({ commit }, payload) {
-      const { email } = payload;
-      commit("setLoading", true);
-      firebase
-        .auth()
-        .sendPasswordResetEmail(email)
-        .then(() => {
-          commit("setLoading", false);
-          console.log("Email Sent");
-        })
-        .catch(error => {
-          commit("setLoading", false);
-          commit("setError", error);
-        });
-    },
+    // resetPasswordWithEmail({ commit }, payload) {
+    //   const { email } = payload;
+    //   commit("setLoading", true);
+    //   firebase
+    //     .auth()
+    //     .sendPasswordResetEmail(email)
+    //     .then(() => {
+    //       commit("setLoading", false);
+    //       console.log("Email Sent");
+    //     })
+    //     .catch(error => {
+    //       commit("setLoading", false);
+    //       commit("setError", error);
+    //     });
+    // },
     logout({ commit }) {
       firebase.auth().signOut();
       commit("setUser", null);
