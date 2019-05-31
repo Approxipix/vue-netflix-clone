@@ -4,7 +4,11 @@ import router from "./router/index";
 import { store } from "./store/index";
 import * as firebase from 'firebase';
 import './index.scss'
+import './helpers/fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 new Vue({
