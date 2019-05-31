@@ -1,11 +1,11 @@
 <template>
-  <div class="Home">
+  <div class="Home bg">
     <div class="Home__container">
       <h1 class="Home__title">See what’s next.</h1>
       <p class="Home__subtitle">WATCH ANYWHERE. CANCEL ANYTIME.</p>
-      <a href="/login" class="btn btn--red Home__button">
+      <router-link class="btn btn--red Home__button" to="sign-in">
         Start Now
-      </a>
+      </router-link>
     </div>
   </div>
 </template>

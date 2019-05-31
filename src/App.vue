@@ -21,8 +21,8 @@
     computed: {
       menuItems() {
         let menuItems = [
-          { title: "Sign up", link: "/signup" },
-          { title: "Sign in", link: "/signin" }
+          { title: "Sign up", link: "/sign-up" },
+          { title: "Sign in", link: "/sign-in" }
         ];
         if (this.userIsAuthenticated) {
           menuItems = [{ icon: "person", title: "Profile", link: "/profile" }];

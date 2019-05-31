@@ -8,9 +8,9 @@
       </svg>
     </div>
     <div class="Header__actions">
-      <a href="/login" class="btn btn--red">
+      <router-link class="btn btn--red" to="sign-in">
         Sign in
-      </a>
+      </router-link>
     </div>
   </header>
 </template>

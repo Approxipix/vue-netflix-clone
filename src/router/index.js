@@ -2,8 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 const Home = () => import("@/components/Home/Home");
 const Profile = () => import("@/components/User/Profile");
-const Signup = () => import("@/components/User/Signup");
-const Signin = () => import("@/components/User/Signin");
+const SignUp = () => import("@/components/SignUp/SignUp");
+const SignIn = () => import("@/components/SignIn/SignIn");
 import AuthGuard from "./auth-guard";
 
 Vue.use(Router);
@@ -27,9 +27,9 @@ export default new Router({
       component: Signup
     },
     {
-      path: "/signin",
-      name: "Signin",
-      component: Signin
+      path: "/sign-in",
+      name: "SignIn",
+      component: SignIn
     }
   ],
   mode: "history"

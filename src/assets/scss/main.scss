@@ -2,12 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  //&.no-scroll {
-  //  overflow-y: hidden;
-  //}
-}
-
 body {
   font-family: 'HelveticaNeue', Helvetica, Arial ,sans-serif;
   font-size: 16px;
@@ -17,9 +11,25 @@ body {
 
 a {
   text-decoration: none;
+  color: #b3b3b3;
+}
+
+p {
+  color: #737373;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+.bg {
+  background-image: url("./assets/images/background/website.jpg");
+  background-position: center center;
+}
+
+.flex-jc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
