@@ -27,7 +27,7 @@
             v-model="password"
             type="password"
             required
-            placeholder="password"
+            placeholder="Password"
           >
           <label class="input__placeholder" for="password">
             Password
@@ -86,7 +86,7 @@
         </li>
       </ul>
       <p>
-        New to netflix? <router-link class="link link--white" to="sign-in">Sign up now.</router-link>
+        New to netflix? <router-link class="link link--white" to="sign-up">Sign up now.</router-link>
       </p>
     </div>
   </div>

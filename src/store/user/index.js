@@ -37,6 +37,10 @@ export default {
       firebase
         .auth()
         .signInWithEmailAndPassword(payload.email, payload.password)
+        // .then(firebase.auth().setPersistence(payload.rememberMe
+        //   ? firebase.auth.Auth.Persistence.NONE
+        //   : firebase.auth.Auth.Persistence.SESSION
+        // ))
         .then(user => {
           commit("setLoading", false);
           const newUser = {

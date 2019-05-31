@@ -11,12 +11,21 @@
       <router-link class="btn btn--red" to="sign-in">
         Sign in
       </router-link>
+      <button v-on:click="onLogOut" class="btn btn--red">
+        logout
+      </button>
     </div>
   </header>
 </template>
 
 <script>
-
+  export default {
+    methods: {
+      onLogOut() {
+        this.$store.dispatch("logout");
+      },
+    }
+  };
 </script>
 
 <style lang="scss">

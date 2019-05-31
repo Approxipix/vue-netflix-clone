@@ -22,9 +22,9 @@ export default new Router({
       // beforeEnter: AuthGuard
     },
     {
-      path: "/signup",
-      name: "Signup",
-      component: Signup
+      path: "/sign-up",
+      name: "SignUp",
+      component: SignUp
     },
     {
       path: "/sign-in",
