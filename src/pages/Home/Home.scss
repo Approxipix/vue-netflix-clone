@@ -37,20 +37,21 @@
     &__container {
       position: absolute;
       bottom: 10%;
-      left: 50%;
-      width: 100%;
+      left: .5rem;
+      right: .5rem;
       text-align: center;
-      transform: translateX(-50%);
       z-index: 15;
       @include md {
         top: 30%;
+        left: 1.5rem;
+        right: 1.5rem;
         bottom: auto;
       }
     }
     &__title {
       position: relative;
       margin-bottom: 1rem;
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: bold;
       @include sm {
         margin-bottom: 1.5rem;

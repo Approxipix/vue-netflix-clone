@@ -123,17 +123,17 @@ export default {
   },
   methods: {
     onSignin() {
-      this.$store.dispatch("signUserIn", {
+      this.$store.dispatch("signIn", {
         email: this.email,
         password: this.password,
         rememberMe: this.rememberMe,
       });
     },
     onSigninGoogle() {
-      this.$store.dispatch("signUserInGoogle");
+      this.$store.dispatch("signInGoogle");
     },
     onSigninFacebook () {
-      this.$store.dispatch('signUserInFacebook')
+      this.$store.dispatch('signInFacebook')
     },
     onDismissed() {
       this.$store.dispatch("clearError");
@@ -143,5 +143,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "./SignIn";
+  @import "SignIn";
 </style>

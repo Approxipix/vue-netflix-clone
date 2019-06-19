@@ -1,12 +1,12 @@
 import * as firebase from 'firebase';
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/Home/Home';
-import SignIn from '@/components/SignIn/SignIn';
-import SignUp from '@/components/SignUp/SignUp';
-import RecoverPassword from '@/components/RecoverPassword/RecoverPassword';
-import RecoverPasswordSuccess from '@/components/RecoverPassword/RecoverPasswordSuccess';
-import RecoverPasswordForm from '@/components/RecoverPassword/RecoverPasswordForm';
+import Home from '@/pages/Home/Home';
+import SignIn from '@/pages/SignIn/SignIn';
+import SignUp from '@/pages/SignUp/SignUp';
+import RecoverPassword from '@/pages/RecoverPassword/RecoverPassword';
+import RecoverPasswordSuccess from '@/pages/RecoverPassword/RecoverPasswordSuccess';
+import RecoverPasswordForm from '@/pages/RecoverPassword/RecoverPasswordForm';
 import Profile from '@/components/User/Profile';
 
 Vue.use(Router);

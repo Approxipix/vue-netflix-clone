@@ -11,7 +11,7 @@
 </template>
 
 <style lang="scss">
-  @import "./Home.scss";
+  @import "Home";
 </style>
 
 

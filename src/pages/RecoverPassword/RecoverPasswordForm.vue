@@ -100,7 +100,7 @@
     },
     methods: {
       onSignup() {
-        this.$store.dispatch("recover", {
+        this.$store.dispatch("recoverPassword", {
           newPassword: this.password,
           code: this.$route.query.oobCode,
         });

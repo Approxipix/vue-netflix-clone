@@ -2,11 +2,31 @@
   <div class="tile bg">
     <div class="tile__container">
       <h1 class="tile__title">
-        Recover password
+        Recover Password
       </h1>
-      <p>
-        Please, check your email for a password reset link
-      </p>
+      <form @submit.prevent="onSignup">
+        <div class="input__wrapper">
+          <input
+            :class="[{'input__filled': email}, 'input']"
+            name="email"
+            id="email"
+            v-model="email"
+            type="email"
+            required
+            placeholder="Email"
+          >
+          <label class="input__placeholder" for="email">
+            Email
+          </label>
+        </div>
+        <button
+          type="submit"
+          class="btn btn--red form__btn"
+          :disabled="loading"
+        >
+          Send
+        </button>
+      </form>
     </div>
   </div>
 </template>
@@ -38,7 +58,7 @@
     },
     methods: {
       onSignup() {
-        this.$store.dispatch("recoverPassword", {
+        this.$store.dispatch("recoverPasswordWithEmail", {
           email: this.email,
         });
       },
@@ -50,5 +70,5 @@
 </script>
 
 <style lang="scss">
-  @import "./RecoverPassword.scss";
+  @import "RecoverPassword";
 </style>
