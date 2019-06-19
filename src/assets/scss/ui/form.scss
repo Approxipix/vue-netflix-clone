@@ -1,9 +1,23 @@
 .form {
+  &__field {
+    margin-bottom: 1rem;
+  }
   &__btn {
     width: 100%;
     margin-top: 1.5rem;
     margin-bottom: .5rem;
     padding: .9rem;
     font-weight: bold;
+  }
+  &__error {
+    &-list {
+      margin-top: .275rem;
+      padding: 0 .175rem;
+    }
+    &-item {
+      padding: .175rem 0;
+      color: #e87c03;
+      font-size: .815rem;
+    }
   }
 }
