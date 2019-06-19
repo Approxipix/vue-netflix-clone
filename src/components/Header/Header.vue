@@ -8,11 +8,11 @@
       </svg>
     </div>
     <div class="Header__actions">
-      <router-link class="btn btn--red" to="sign-in">
+      <router-link v-if="!user && currentComponent !== 'SignIn'" class="btn btn--red" to="sign-in">
         Sign in
       </router-link>
-      <button v-on:click="onLogOut" class="btn btn--red">
-        logout
+      <button v-if="user" v-on:click="onLogOut" class="btn btn--red">
+        Logout
       </button>
     </div>
   </header>
@@ -20,6 +20,14 @@
 
 <script>
   export default {
+    computed: {
+      currentComponent() {
+        return this.$route.name
+      },
+      user() {
+        return this.$store.getters.user;
+      }
+    },
     methods: {
       onLogOut() {
         this.$store.dispatch("logout");
