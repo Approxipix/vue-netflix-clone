@@ -19,5 +19,65 @@
       color: #e87c03;
       font-size: .815rem;
     }
+    &-message {
+      margin-bottom: 1rem;
+      padding: .625rem 1.25rem;
+      font-size: .875rem;
+      background: #e87c03;
+      border-radius: .25rem;
+      a {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+  }
+  &__required {
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: .5rem;
+      margin: .5rem 0 .75rem 0;
+    }
+    &-item {
+      position: relative;
+      padding-left: .7rem;
+      transition: all .2s ease-in-out;
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 35%;
+        width: .4rem;
+        height: .4rem;
+        border-radius: 50%;
+        background-color: #dc0913;
+        transition: all .2s ease-in-out;
+      }
+      &--done {
+        color: #737373;
+        &:before {
+          background-color: #737373;
+        }
+        & .SignUp__required-text:after {
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+    &-text {
+      position: relative;
+      font-size: .725rem;
+      &:after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        left: 50%;
+        right: 50%;
+        top: 55%;
+        background-color: #737373;
+        transition: all .2s ease-in-out;
+      }
+    }
   }
 }

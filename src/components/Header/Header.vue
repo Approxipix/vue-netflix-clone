@@ -8,10 +8,18 @@
       </svg>
     </div>
     <div class="Header__actions">
-      <router-link v-if="!user && currentComponent !== 'SignIn'" class="btn btn--red" to="sign-in">
+      <router-link
+        to="sign-in"
+        class="btn btn--red"
+        v-if="!userIsAuthenticated && currentComponent !== 'SignIn'"
+      >
         Sign in
       </router-link>
-      <button v-if="user" v-on:click="onLogOut" class="btn btn--red">
+      <button
+        class="btn btn--red"
+        v-on:click="onLogOut"
+        v-if="userIsAuthenticated"
+      >
         Logout
       </button>
     </div>
@@ -24,8 +32,11 @@
       currentComponent() {
         return this.$route.name
       },
-      user() {
-        return this.$store.getters.user;
+      userIsAuthenticated() {
+        return (
+          this.$store.getters.user !== null &&
+          this.$store.getters.user !== undefined
+        );
       }
     },
     methods: {

@@ -40,24 +40,24 @@
                 {{error}}
               </li>
             </ul>
-            <ul class="SignUp__required-list">
-              <li :class="[{'SignUp__required-item--done': password.length >= 6}, 'SignUp__required-item']">
-                <span class="SignUp__required-text">
+            <ul class="form__required-list">
+              <li :class="[{'form__required-item--done': password.length >= 6}, 'form__required-item']">
+                <span class="form__required-text">
                   At least 6 characters long
                 </span>
               </li>
-              <li :class="[{'SignUp__required-item--done': password !== password.toLowerCase()}, 'SignUp__required-item']">
-                <span class="SignUp__required-text">
+              <li :class="[{'form__required-item--done': password !== password.toLowerCase()}, 'form__required-item']">
+                <span class="form__required-text">
                   One uppercase character
                 </span>
               </li>
-              <li :class="[{'SignUp__required-item--done': password !== password.toUpperCase()}, 'SignUp__required-item']">
-                <span class="SignUp__required-text">
+              <li :class="[{'form__required-item--done': password !== password.toUpperCase()}, 'form__required-item']">
+                <span class="form__required-text">
                   One lowercase character
                 </span>
               </li>
-              <li :class="[{'SignUp__required-item--done': true}, 'SignUp__required-item']">
-                <span class="SignUp__required-text">
+              <li :class="[{'form__required-item--done': isLatin(password)}, 'form__required-item']">
+                <span class="form__required-text">
                   Latin characters only
                 </span>
               </li>
@@ -113,9 +113,6 @@ export default {
     user() {
       return this.$store.getters.user;
     },
-    error() {
-      return this.$store.getters.error;
-    },
     loading() {
       return this.$store.getters.loading;
     }
@@ -148,7 +145,7 @@ export default {
       }
       return Object.values(this.errors).every(field => field.length === 0);
     },
-    isLatin: function(password) {
+    isLatin(password) {
       let ifLatin =  /^[a-zA-z0-9_]+$/g;
       return ifLatin.test(password);
     },
@@ -159,9 +156,6 @@ export default {
         password: this.password
       });
     },
-    onDismissed() {
-      this.$store.dispatch("clearError");
-    }
   }
 };
 </script>
