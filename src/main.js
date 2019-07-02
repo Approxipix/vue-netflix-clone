@@ -5,6 +5,7 @@ import { store } from "./store/index";
 import * as firebase from 'firebase';
 import './index.scss'
 import './helpers/fontawesome'
+import './helpers/axiosInterceptors';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

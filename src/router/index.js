@@ -1,13 +1,13 @@
 import * as firebase from 'firebase';
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/pages/Home/Home';
+import StartNow from '@/pages/StartNow/StartNow';
 import SignIn from '@/pages/SignIn/SignIn';
 import SignUp from '@/pages/SignUp/SignUp';
 import RecoverPassword from '@/pages/RecoverPassword/RecoverPassword';
 import RecoverPasswordSuccess from '@/pages/RecoverPassword/RecoverPasswordSuccess';
 import RecoverPasswordForm from '@/pages/RecoverPassword/RecoverPasswordForm';
-import Profile from '@/components/User/Profile';
+import Home from '@/pages/Home/Home';
 
 Vue.use(Router);
 
@@ -20,8 +20,8 @@ const router = new Router({
     },
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'StartNow',
+      component: StartNow
     },
     {
       path: '/sign-in',
@@ -49,9 +49,9 @@ const router = new Router({
       component: RecoverPasswordForm
     },
     {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile,
+      path: '/home',
+      name: 'Home',
+      component: Home,
       meta: {
         requiresAuth: true
       }
@@ -64,7 +64,7 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
   if (requiresAuth && !currentUser) next('sign-in');
-  else if (!requiresAuth && currentUser) next('profile');
+  else if (!requiresAuth && currentUser) next('home');
   else next();
 });
 

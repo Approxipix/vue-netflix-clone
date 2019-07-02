@@ -10,8 +10,34 @@
   </div>
 </template>
 
-<style lang="scss">
-  @import "Home";
-</style>
+<script>
+  import axios from 'axios'
+  import Slider from '../../components/Slider/Slider.vue';
 
+  export default {
+    data () {
+      return {
 
+      }
+    },
+    computed: {
+      user() {
+        return this.$store.getters.user;
+      }
+    },
+    mounted() {
+      const that = this;
+      axios.get('https://api.themoviedb.org/3/discover/movie').then(response => {
+        // axios.get('https://api.themoviedb.org/3/discover/movie?primary_release_year=2019&sort_by=revenue.desc').then(response => {
+        //   console.log(response)
+      });
+    },
+    methods: {
+
+    },
+    components: {
+      Slider,
+
+    }
+  };
+</script>
