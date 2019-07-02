@@ -1,0 +1,86 @@
+.Home {
+  padding-top: 5rem;
+}
+
+.Slider__actions {
+  margin-top: 20px;
+}
+.Slider__nav-button {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 24px;
+  transition-duration: 0.3s;
+}
+.Slider__nav-button:hover {
+  color: #888;
+}
+.Slider__dot {
+  margin: 0 10px;
+}
+.Slider__dot button {
+  background-color: #eee;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  height: 10px;
+  font-size: 0;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  transition-duration: 0.3s;
+  width: 10px;
+}
+.Slider__dot--current button, .Slider__dot:hover button {
+  background-color: #888;
+}
+
+
+@keyframes loading-7{
+  0%{margin-bottom:0}
+  50%{margin-bottom:20px;}
+  100%{margin-bottom:0px;}
+}
+@-webkit-keyframes loading-7{
+  0%{margin-bottom:0}
+  50%{margin-bottom:20px;}
+  100%{margin-bottom:0px;}
+}
+.loadingDot i {
+  display: inline-block;
+  margin-left: 5px;
+  background: rgb(27, 188, 155);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.loadingDot i:nth-child(1) {
+  -webkit-animation: loading-7 .7s ease-in 0s infinite;
+  animation: loading-7 .7s ease-in 0s infinite;
+}
+.loadingDot i:nth-child(2) {
+  -webkit-animation: loading-7 .7s ease-in 0.15s infinite;
+  animation: loading-7 .7s ease-in 0.15s infinite;
+}
+.loadingDot i:nth-child(3) {
+  -webkit-animation: loading-7 .7s ease-in 0.3s infinite;
+  animation: loading-7 .7s ease-in 0.3s infinite;
+}
+.loadingDot i:nth-child(4) {
+  -webkit-animation: loading-7 .7s ease-in 0.45s infinite;
+  animation: loading-7 .7s ease-in 0.45s infinite;
+}
+
+
+.slide {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  h3 {
+    font-weight: 300;
+    font-size: 32px;
+  }
+}

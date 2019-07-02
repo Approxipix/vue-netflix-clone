@@ -13,11 +13,20 @@
 <script>
   import axios from 'axios'
   import Slider from '../../components/Slider/Slider.vue';
+  import getImageUrl from '../../helpers/getImageUrl'
 
   export default {
     data () {
       return {
-
+        filmList: [],
+        options: {
+          dots: true,
+          // autoplay: true,
+          slidesToShow: 1,
+          autoplaySpeed: 2000,
+          speed: 300,
+          timing: "ease-in-out",
+        }
       }
     },
     computed: {
@@ -41,3 +50,7 @@
     }
   };
 </script>
+
+<style lang="scss">
+  @import "Home";
+</style>

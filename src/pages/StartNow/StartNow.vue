@@ -1,9 +1,9 @@
 <template>
-  <div class="Home bg">
-    <div class="Home__container">
-      <h1 class="Home__title">See what’s next.</h1>
-      <p class="Home__subtitle">WATCH ANYWHERE. CANCEL ANYTIME.</p>
-      <router-link class="btn btn--red Home__btn" to="sign-in">
+  <div class="StartNow bg">
+    <div class="StartNow__container">
+      <h1 class="StartNow__title">See what’s next.</h1>
+      <p class="StartNow__subtitle">WATCH ANYWHERE. CANCEL ANYTIME.</p>
+      <router-link class="btn btn--red StartNow__btn" to="sign-in">
         Start Now
       </router-link>
     </div>

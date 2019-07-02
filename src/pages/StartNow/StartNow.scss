@@ -1,6 +1,6 @@
 @import "../../assets/scss/helpers/breakpoints";
 
-.Home {
+.StartNow {
   position: relative;
   min-height: 100vh;
   padding: 1rem 1.5rem;
@@ -32,8 +32,8 @@
   }
 }
 
-.Home {
-  .Home {
+.StartNow {
+  .StartNow {
     &__container {
       position: absolute;
       bottom: 10%;
