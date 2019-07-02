@@ -1,11 +1,11 @@
 <template>
-  <div class="Home bg">
-    <div class="Home__container">
-      <h1 class="Home__title">See what’s next.</h1>
-      <p class="Home__subtitle">WATCH ANYWHERE. CANCEL ANYTIME.</p>
-      <router-link class="btn btn--red Home__btn" to="sign-in">
-        Start Now
-      </router-link>
+  <div class="Home">
+    <div class="Home__slider">
+      <Slider ref="slider" :options="options">
+        <div v-for="(item,index) in filmList" :key="index" :class="`slide--${index}`">
+          <MovieDetails :item="item"/>
+        </div>
+      </Slider>
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@
 <script>
   import axios from 'axios'
   import Slider from '../../components/Slider/Slider.vue';
-  import getImageUrl from '../../helpers/getImageUrl'
+  import MovieDetails from '../../components/MovieDetails/MovieDetails.vue';
 
   export default {
     data () {
@@ -35,18 +35,16 @@
       }
     },
     mounted() {
-      const that = this;
+      this.$refs.slider.disableAutoPlay();
       axios.get('https://api.themoviedb.org/3/discover/movie').then(response => {
-        // axios.get('https://api.themoviedb.org/3/discover/movie?primary_release_year=2019&sort_by=revenue.desc').then(response => {
-        //   console.log(response)
+        this.filmList = response.data.results.splice(0, 10);
+      }).then(() => {
+        this.$refs.slider.reload();
       });
-    },
-    methods: {
-
     },
     components: {
       Slider,
-
+      MovieDetails,
     }
   };
 </script>

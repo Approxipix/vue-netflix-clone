@@ -26,6 +26,7 @@ export default {
             photoUrl: user.photoURL
           };
           commit("setUser", newUser);
+          this.dispatch("setConfiguration");
         })
         .catch(error => {
           commit("setLoading", false);
@@ -40,6 +41,7 @@ export default {
         .signInWithEmailAndPassword(payload.email, payload.password)
         .then(user => {
           commit("setLoading", false);
+          this.dispatch("setConfiguration");
           const newUser = {
             id: user.uid,
             name: user.displayName,
@@ -54,6 +56,7 @@ export default {
         });
     },
     autoSignIn({ commit }, payload) {
+      this.dispatch("setConfiguration");
       commit("setUser", {
         id: payload.uid,
         name: payload.displayName,
@@ -69,6 +72,7 @@ export default {
         .signInWithPopup(new firebase.auth.GoogleAuthProvider())
         .then(user => {
           commit("setLoading", false);
+          this.dispatch("setConfiguration");
           const newUser = {
             id: user.uid,
             name: user.displayName,
@@ -90,6 +94,7 @@ export default {
         .signInWithPopup(new firebase.auth.FacebookAuthProvider())
         .then(user => {
           commit("setLoading", false);
+          this.dispatch("setConfiguration");
           const newUser = {
             id: user.uid,
             name: user.displayName,
@@ -127,6 +132,7 @@ export default {
         .then(user => {
           commit("setLoading", false);
           router.push('/profile');
+          this.dispatch("setConfiguration");
           const newUser = {
             id: user.uid,
             name: user.displayName,

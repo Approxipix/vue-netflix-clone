@@ -1,0 +1,48 @@
+$colors: #84EBBD, #4977EC, #F6BB67, #333841;
+$d: 175.6449737548828;
+
+.Spinner {
+  width: 66px; height: 66px;
+  animation: contanim 2s linear infinite;
+
+  svg {
+    width: 100%; height: 100%;
+
+    left: 0; top: 0;
+    position: absolute;
+
+    transform: rotate(-90deg);
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) circle {
+        stroke: nth($colors, $i);
+        stroke-dasharray: 1, 300;
+        stroke-dashoffset: 0;
+
+        animation: strokeanim 3s calc(.2s * (#{$i})) ease infinite;
+        transform-origin: center center;
+      }
+    }
+  }
+}
+
+@keyframes strokeanim {
+  0% {
+    stroke-dasharray: 1, 300;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 120, 300;
+    stroke-dashoffset: -$d / 3;
+  }
+  100% {
+    stroke-dasharray: 120, 300;
+    stroke-dashoffset: -$d;
+  }
+}
+
+@keyframes contanim {
+  100% {
+    transform: rotate(360deg)
+  }
+}
