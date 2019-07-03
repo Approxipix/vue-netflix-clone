@@ -35,11 +35,15 @@
       }
     },
     mounted() {
+      this.$refs.slider.toggleLoading();
       this.$refs.slider.disableAutoPlay();
       axios.get('https://api.themoviedb.org/3/discover/movie').then(response => {
         this.filmList = response.data.results.splice(0, 10);
       }).then(() => {
         this.$refs.slider.reload();
+        this.$refs.slider.toggleLoading();
+      }).catch(error => {
+        console.log(error)
       });
     },
     components: {
