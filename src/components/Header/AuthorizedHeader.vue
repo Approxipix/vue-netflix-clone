@@ -20,13 +20,7 @@
     </nav>
 
     <div class="Header__actions">
-      <button
-        class="btn btn--red"
-        v-on:click="onLogOut"
-      >
-        Logout
-      </button>
-
+      <ProfileDropdown />
       <button :class="[{'hamburger--active': isMenuOpened}, 'hamburger', 'button']" v-on:click="toggleSidebar">
         <span></span>
         <span></span>
@@ -39,6 +33,8 @@
 
 <script>
   import navigationList from './NavigationList'
+  import ProfileDropdown from '../ProfileDropdown/ProfileDropdown'
+
   export default {
     data() {
       return {
@@ -48,9 +44,6 @@
       }
     },
     methods: {
-      onLogOut() {
-        this.$store.dispatch("logout");
-      },
       handleScroll () {
         const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
         if (currentScrollPosition > 50) {
@@ -74,6 +67,9 @@
     },
     destroyed () {
       window.removeEventListener('scroll', this.handleScroll);
+    },
+    components: {
+      ProfileDropdown,
     }
   };
 </script>
