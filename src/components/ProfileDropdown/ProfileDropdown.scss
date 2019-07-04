@@ -30,18 +30,18 @@
       right: 0;
       background-color: rgba(0,0,0,.85);
       border: 1px solid #494949;
+      border-top: 2px solid #fff;
       color: #fff;
       transition: all .3s ease-in-out;
       visibility: hidden;
       opacity: 0;
       &:before {
         content: '';
-        left: -1px;
+        left: 0;
         bottom: 100%;
         position: absolute;
         height: 2rem;
-        width: calc(100% + 2px);
-        border-bottom: 2px solid #fff;
+        width: 100%;
       }
       &:after {
         content: '';
