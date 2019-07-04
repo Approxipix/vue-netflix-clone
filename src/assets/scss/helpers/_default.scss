@@ -47,6 +47,10 @@ a {
 	color: #b3b3b3;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
 p {
 	color: #737373;
 }
@@ -54,6 +58,12 @@ p {
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .content-area {

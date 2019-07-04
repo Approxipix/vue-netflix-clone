@@ -1,31 +1,121 @@
 @import "../../assets/scss/helpers/breakpoints";
 
 .Header {
-  position: absolute;
+  position: fixed;
   top: 0;
   display: grid;
-  grid-column-gap: 1rem;
+  grid-column-gap: 2rem;
+  grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "logo actions";
+    "logo nav actions";
+  align-items: center;
   width: 100%;
   padding: 1rem 1.5rem;
+  transition: background-color .2s ease-in-out;
   z-index: 100;
-  @include lg {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-      ". logo actions";
+  .hamburger {
+    display: block;
+    @include md {
+      display: none;
+    }
   }
+  &--bg {
+    background-color: #1a1a1a;
+  }
+  &--un {
+    position: absolute;
+    top: 0;
+    display: grid;
+    grid-column-gap: 1rem;
+    grid-template-areas:
+      "logo actions";
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    z-index: 100;
+    @include lg {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas:
+        ". logo actions";
+    }
+  }
+
   &__logo {
     grid-area: logo;
     width: 5.6rem;
     height: 1.7rem;
     fill: #e50914;
-    @include sm {
-      width: 10.5rem;
-      height: 2.9rem;
+    z-index: 110;
+    &--un {
+      @include sm {
+        width: 10.5rem;
+        height: 2.9rem;
+      }
+      @include lg {
+        margin: 0 auto;
+      }
     }
-    @include lg {
-      margin: 0 auto;
+  }
+
+  &__nav {
+    position: fixed;
+    grid-area: nav;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    transition: width .6s ease-in-out;
+    overflow: hidden;
+    @include md {
+      position: relative;
+      display: block;
+      background-color: transparent;
+      overflow: visible;
+    }
+    &--opened {
+      width: 100%;
+      .Header__nav-list {
+        transition: opacity .6s ease-in-out;
+        opacity: 1;
+      }
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+      white-space: nowrap;
+      @include md {
+        flex-direction: row;
+        text-align: left;
+        opacity: 1;
+        transition: none;
+      }
+    }
+    &-item {
+      margin-bottom: 1rem;
+      @include md {
+        margin-bottom: 0;
+        &:not(:last-child) {
+          margin-right: 1.25rem;
+        }
+      }
+    }
+    &-link {
+      font-size: 1.25rem;
+      color: #fff;
+      &:hover {
+        color: #a3a2a2;
+      }
+      @include md {
+        font-size: 1rem;
+      }
     }
   }
 

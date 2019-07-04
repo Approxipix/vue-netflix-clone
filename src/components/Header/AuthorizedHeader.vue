@@ -1,5 +1,6 @@
 <template>
-  <header class="Header">
+  <header :class="[{'Header--bg': isScrolled}, 'Header']">
+
     <div class="Header__logo">
       <svg viewBox="0 0 111 30" focusable="true">
         <g id="netflix-logo">
@@ -7,6 +8,17 @@
         </g>
       </svg>
     </div>
+
+    <nav :class="[{'Header__nav--opened': isMenuOpened}, 'Header__nav']">
+      <ul class="Header__nav-list">
+        <li class="Header__nav-item" v-for="(item,index) in navList" :key="index">
+          <router-link :to="item.link" class="Header__nav-link">
+            {{item.title}}
+          </router-link>
+        </li>
+      </ul>
+    </nav>
+
     <div class="Header__actions">
       <button
         class="btn btn--red"
@@ -14,16 +26,54 @@
       >
         Logout
       </button>
+
+      <button :class="[{'hamburger--active': isMenuOpened}, 'hamburger', 'button']" v-on:click="toggleSidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+
   </header>
 </template>
 
 <script>
+  import navigationList from './NavigationList'
   export default {
+    data() {
+      return {
+        navList: navigationList,
+        isScrolled: false,
+        isMenuOpened: false,
+      }
+    },
     methods: {
       onLogOut() {
         this.$store.dispatch("logout");
       },
+      handleScroll () {
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScrollPosition > 50) {
+          return this.isScrolled = true;
+        } else {
+          return this.isScrolled = false;
+        }
+      },
+      toggleSidebar () {
+        this.isMenuOpened = !this.isMenuOpened;
+        if (this.isMenuOpened) {
+          document.documentElement.classList.add('no-scroll');
+        } else {
+          document.documentElement.classList.remove('no-scroll');
+
+        }
+      }
+    },
+    created () {
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+      window.removeEventListener('scroll', this.handleScroll);
     }
   };
 </script>
