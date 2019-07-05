@@ -28,12 +28,7 @@
 
   export default {
     props: {
-      item: Object,
-    },
-    data() {
-      return {
-        movie: this.item
-      }
+      movie: Object,
     },
     methods: {
       getImageUrl: function (url, size) {

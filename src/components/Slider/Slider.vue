@@ -5,7 +5,7 @@
         <div class="Slider__slides Slider__slides--cloned" ref="slidesClonedBefore" v-if="clonedSlides">
           <slot></slot>
         </div>
-        <div class="Slider__slides Slider__slides--regular" ref="slides">
+        <div :class="['Slider__slides', 'Slider__slides--regular', settings.hoverClass]" ref="slides">
           <slot></slot>
         </div>
         <div class="Slider__slides Slider__slides--cloned" ref="slidesClonedAfter" v-if="clonedSlides">
