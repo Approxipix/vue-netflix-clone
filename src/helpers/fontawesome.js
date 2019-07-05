@@ -5,6 +5,8 @@ import {
 
 import {
   faSortDown,
+  faPlus,
+  faPlay,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -16,4 +18,6 @@ library.add(
   faFacebook,
   faGoogle,
   faSortDown,
+  faPlus,
+  faPlay,
 );

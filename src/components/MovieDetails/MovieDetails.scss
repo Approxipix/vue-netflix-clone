@@ -1,0 +1,67 @@
+.MovieDetails {
+  width: 100%;
+  min-height: 80vh;
+  align-items: center;
+  color: #fff;
+  display: flex;
+  background-position: 25rem top;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, #000 50%, transparent);
+  }
+  .MovieDetails {
+    &__fade {
+      &--top,
+      &--bottom {
+        position: absolute;
+        width: 100%;
+        height: 30%;
+      }
+      &--top {
+        top: 0;
+        background-image: linear-gradient(0deg, transparent, rgba(37,37,37,0.3), #1a1a1a);
+      }
+      &--bottom {
+        bottom: 0;
+        background-image: linear-gradient(180deg, transparent, rgba(37,37,37,0.3), #1a1a1a);
+      }
+    }
+    &__wrapper {
+      width: 100%;
+      padding: 3rem;
+    }
+    &__details {
+      width: 30%;
+
+    }
+    &__title {
+      margin: 0 0 1.5rem 0;
+      font-size: 3.5rem;
+      line-height: 3rem;
+    }
+    &__description {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    &__btn {
+      padding: .5rem 2rem;
+      background-color: rgba(51,51,51,0.5);
+      &:hover {
+        color: #000;
+        background-color: #e6e6e6;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        transition: all .2s ease-in-out;
+      }
+      &-icon {
+        margin-right: .25rem;
+      }
+    }
+  }
+}
