@@ -4,7 +4,7 @@
 
     </div>
     <div class="ProfileDropdown__arrow">
-      <font-awesome-icon :icon="['fas', 'chevron-down']" />
+      <font-awesome-icon :icon="['fas', 'sort-down']" />
     </div>
     <div class="ProfileDropdown__dropdown">
       <div class="ProfileDropdown__dropdown-list">

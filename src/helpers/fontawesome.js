@@ -4,7 +4,7 @@ import {
 } from '@fortawesome/fontawesome-svg-core';
 
 import {
-  faChevronDown,
+  faSortDown,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -15,5 +15,5 @@ import {
 library.add(
   faFacebook,
   faGoogle,
-  faChevronDown,
+  faSortDown,
 );

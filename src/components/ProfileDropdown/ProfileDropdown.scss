@@ -6,9 +6,6 @@
       visibility: visible;
       opacity: 1;
     }
-    .ProfileDropdown__arrow {
-      transform: rotateX(180deg);
-    }
   }
   .ProfileDropdown {
     &__avatar {
@@ -20,9 +17,6 @@
     }
     &__arrow {
       padding: .25rem;
-      transition: transform .3s ease-in-out;
-      transform-origin: 45% 45%;
-      will-change: transorm;
     }
     &__dropdown {
       position: absolute;
