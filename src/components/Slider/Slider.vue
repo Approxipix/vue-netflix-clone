@@ -2,13 +2,13 @@
   <div class="Slider" :class="sliderClasses">
     <div ref="list" class="Slider__list">
       <div ref="track" class="Slider__track" :style="{transform: `translate(${translateX + marginX}px)`, transition: `transform ${settings.timing} ${transitionDelay}ms`}" @mouseover="handleMouseOver('track')" @mouseout="handleMouseOut('track')">
-        <div class="Slider__slides Slider__slides--cloned" ref="slidesClonedBefore" v-if="clonedSlides">
+        <div :class="['Slider__slides', 'Slider__slides--cloned', settings.hoverClass]" ref="slidesClonedBefore" v-if="clonedSlides">
           <slot></slot>
         </div>
         <div :class="['Slider__slides', 'Slider__slides--regular', settings.hoverClass]" ref="slides">
           <slot></slot>
         </div>
-        <div class="Slider__slides Slider__slides--cloned" ref="slidesClonedAfter" v-if="clonedSlides">
+        <div :class="['Slider__slides', 'Slider__slides--cloned', settings.hoverClass]" ref="slidesClonedAfter" v-if="clonedSlides">
           <slot></slot>
         </div>
       </div>
@@ -249,14 +249,14 @@
       // Go to next slide
       goToNext () {
         if (this.canGoToNext) {
-          this.goTo(this.currentSlide + 1)
+          this.goTo(this.currentSlide + 1 * this.settings.slidesToScroll)
         }
       },
 
       // Go to previous slide
       goToPrev () {
         if (this.canGoToPrev) {
-          this.goTo(this.currentSlide - 1)
+          this.goTo(this.currentSlide - 1 * this.settings.slidesToScroll)
         }
       },
 
@@ -293,7 +293,7 @@
           }
         }
 
-        let translateX = (!this.settings.fade) ? n * this.widthSlide * this.settings.slidesToScroll : 0;
+        let translateX = (!this.settings.fade) ? n * this.widthSlide : 0;
         this.transitionDelay = (transition) ? this.speed : 0;
         this.translateX = (this.settings.rtl) ? translateX : -1 * translateX;
       }
