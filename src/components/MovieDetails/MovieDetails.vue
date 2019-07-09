@@ -1,5 +1,5 @@
 <template>
-  <div class="MovieDetails" :style="{ backgroundImage: 'url(' + getImageUrl(movie.backdrop_path, 3) + ')' }">
+  <div class="MovieDetails" :style="{ backgroundImage: 'url(' + getImageUrl(movie.backdrop_path, 2) + ')' }">
     <div class="MovieDetails__fade--top"></div>
     <div class="MovieDetails__wrapper">
       <h1 class="MovieDetails__title">

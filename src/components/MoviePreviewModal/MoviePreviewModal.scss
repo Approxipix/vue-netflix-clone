@@ -1,0 +1,34 @@
+.MoviePreviewModal {
+  position: absolute;
+  top: calc(100% - 1rem);
+  width: 100%;
+  min-height: 20rem;
+  padding: 2rem 4rem;
+  background-color: rgba(0,0,0,0.6);
+  border-top: 3px solid #fff;
+  z-index: 120;
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(90deg, #000 50%, transparent);
+  }
+  &__details {
+    width: 50%;
+  }
+  &__title {
+    margin: 0 0 1.5rem 0;
+    font-size: 2.5rem;
+    line-height: 2rem;
+  }
+  &__description {
+    font-size: 1.2rem;
+    color: #fff;
+  }
+}

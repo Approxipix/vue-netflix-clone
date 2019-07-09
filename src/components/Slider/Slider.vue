@@ -2,13 +2,13 @@
   <div class="Slider" :class="sliderClasses">
     <div ref="list" class="Slider__list">
       <div ref="track" class="Slider__track" :style="{transform: `translate(${translateX + marginX}px)`, transition: `transform ${settings.timing} ${transitionDelay}ms`}" @mouseover="handleMouseOver('track')" @mouseout="handleMouseOut('track')">
-        <div :class="['Slider__slides', 'Slider__slides--cloned', settings.hoverClass]" ref="slidesClonedBefore" v-if="clonedSlides">
+        <div :class="['Slider__slides', 'Slider__slides--cloned', settings.extraClass]" ref="slidesClonedBefore" v-if="clonedSlides">
           <slot></slot>
         </div>
-        <div :class="['Slider__slides', 'Slider__slides--regular', settings.hoverClass]" ref="slides">
+        <div :class="['Slider__slides', 'Slider__slides--regular', settings.extraClass]" ref="slides">
           <slot></slot>
         </div>
-        <div :class="['Slider__slides', 'Slider__slides--cloned', settings.hoverClass]" ref="slidesClonedAfter" v-if="clonedSlides">
+        <div :class="['Slider__slides', 'Slider__slides--cloned', settings.extraClass]" ref="slidesClonedAfter" v-if="clonedSlides">
           <slot></slot>
         </div>
       </div>
