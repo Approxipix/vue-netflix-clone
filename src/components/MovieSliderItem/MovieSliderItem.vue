@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['MovieSliderItem', {'MovieSliderItem--selected': movie.id === selectedMovie.id && isOpened}]"
+    class="MovieSliderItem"
     :style="{ backgroundImage: 'url(' + getImageUrl(movie.backdrop_path, 1) + ')' }"
     @click="selectMovie(movie)"
   >
@@ -19,7 +19,6 @@
     name: 'MovieSliderItem',
     props: {
       movie: Object,
-      isOpened: Boolean,
     },
     computed: {
       selectedMovie() {
@@ -31,6 +30,10 @@
         return getImageUrl(url, size)
       },
       selectMovie (movie) {
+        const slide = this.$el.parentNode;
+        const slider = slide.parentNode;
+        slider.childNodes.forEach((slide) => slide.classList.remove('Slider__slide--selected'));
+        slide.classList.add('Slider__slide--selected');
         this.$emit('select-movie', movie)
       }
     },

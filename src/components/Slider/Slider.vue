@@ -109,7 +109,7 @@
         return this.allSlides.length
       },
       marginX: function () {
-        let marginX = (this.clonedSlides) ? this.slidesCount * this.widthSlide : 0
+        let marginX = (this.clonedSlides) ? this.slidesCount * this.widthSlide : 0;
         if (this.settings.centerMode) {
           marginX -= (Math.floor(this.settings.slidesToShow / 2) - +(this.settings.slidesToShow % 2 === 0)) * this.widthSlide
         }

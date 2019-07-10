@@ -1,11 +1,6 @@
 .MovieSlider {
-  padding-bottom: 1rem;
-  z-index: 200;
   &__wrapper {
-    padding: 1rem 2rem;
-
-    .Slider {
-      z-index: 110;
-    }
+    padding: 0 2rem;
+    margin-bottom: 1.5rem;
   }
 }

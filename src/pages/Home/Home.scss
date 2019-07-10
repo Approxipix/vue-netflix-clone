@@ -1,5 +1,8 @@
 .Home {
-  &__slider {
+  &__main-slider {
     height: 80vh;
+  }
+  &__slider-list {
+    padding: 1rem 0;
   }
 }

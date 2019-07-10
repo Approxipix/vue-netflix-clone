@@ -1,8 +1,8 @@
 <template>
   <div class="MovieSlider__wrapper">
-    <h2>{{categoryTitle}}</h2>
+    <h2 class="MovieSlider__title">{{categoryTitle}}</h2>
     <div v-click-outside="clickOut">
-      <Slider ref="slider" :options="options">
+      <Slider ref="slider" :options="options" :class="{'Slider--has-selected': isOpened && selectedMovie}">
         <div :key="index" v-for="(movie,index) in movieList" :class="`slide--${index}`">
           <MovieSliderItem :movie="movie" :isOpened="isOpened" v-on:select-movie="selectMovie"></MovieSliderItem>
         </div>

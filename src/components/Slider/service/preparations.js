@@ -21,7 +21,7 @@ const mixin = {
 				}
 			});
 
-			this.settings = Object.assign({}, newSettings)
+			this.settings = Object.assign({}, newSettings);
 		},
 
 		// Prepare slides classes and styles
@@ -42,15 +42,16 @@ const mixin = {
 		// Prepare slides active/current classes
 		prepareSlidesClasses () {
 			if (this.currentSlide === null) return false;
-
 			// Remove active & current classes
 			for (let i = 0; i < this.slidesCount; i++) {
 				this.slides[i].classList.remove('Slider__slide--active');
 				this.slides[i].classList.remove('Slider__slide--current');
+				this.slides[i].classList.remove('Slider__slide--last');
 			}
 
 			// Add active & current class for current slide
 			this.slides[this.currentSlide].classList.add('Slider__slide--active');
+			this.slides[this.currentSlide + this.options.slidesToShow - 1].classList.add('Slider__slide--last');
 
 			let start = (this.clonedSlides) ? this.slidesCount + this.currentSlide : this.currentSlide;
 

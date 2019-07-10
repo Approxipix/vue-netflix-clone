@@ -1,15 +1,17 @@
 <template>
   <div class="Home">
-    <div class="Home__slider">
+    <div class="Home__main-slider">
       <Slider ref="slider" :options="options">
         <div v-for="(movie,index) in movieList" :key="index" :class="`slide--${index}`">
           <MovieDetails :movie="movie"/>
         </div>
       </Slider>
     </div>
-    <MovieSlider category-title="Netflix Originals" request-url="discover/tv?with_networks=213"></MovieSlider>
-    <MovieSlider category-title="Trending Now" request-url="trending/all/week"></MovieSlider>
-    <MovieSlider category-title="Top Rated" request-url="movie/top_rated"></MovieSlider>
+    <div class="Home__slider-list">
+      <MovieSlider category-title="Netflix Originals" request-url="discover/tv?with_networks=213"></MovieSlider>
+      <MovieSlider category-title="Trending Now" request-url="trending/all/week"></MovieSlider>
+      <MovieSlider category-title="Top Rated" request-url="movie/top_rated"></MovieSlider>
+    </div>
   </div>
 </template>
 

@@ -5,11 +5,10 @@
   min-height: 20rem;
   padding: 2rem 4rem;
   background-color: rgba(0,0,0,0.6);
-  border-top: 3px solid #fff;
-  z-index: 120;
   background-position: right top;
   background-repeat: no-repeat;
   background-size: 60%;
+  z-index: 50;
   &:before {
     content: '';
     position: absolute;
