@@ -7,6 +7,9 @@ import {
   faSortDown,
   faPlus,
   faPlay,
+  faChevronDown,
+  faPlayCircle,
+  faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -20,4 +23,7 @@ library.add(
   faSortDown,
   faPlus,
   faPlay,
+  faChevronDown,
+  faPlayCircle,
+  faPlusCircle,
 );

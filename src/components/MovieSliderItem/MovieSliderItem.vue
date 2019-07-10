@@ -2,12 +2,22 @@
   <div
     class="MovieSliderItem"
     :style="{ backgroundImage: 'url(' + getImageUrl(movie.backdrop_path, 1) + ')' }"
-    @click="selectMovie(movie)"
   >
     <div class="MovieSliderItem__details">
       <h3 class="MovieSliderItem__title">
         {{!!movie.title ? movie.title : movie.name}}
       </h3>
+      <div class="MovieSliderItem__actions">
+        <button class="btn MovieSliderItem__btn">
+          <font-awesome-icon :icon="['fas', 'play-circle']"/>
+        </button>
+        <button class="btn MovieSliderItem__btn MovieSliderItem__btn--arrow" @click="selectMovie(movie)">
+          <font-awesome-icon :icon="['fas', 'chevron-down']"/>
+        </button>
+        <button class="btn MovieSliderItem__btn">
+          <font-awesome-icon :icon="['fas', 'plus-circle']"/>
+        </button>
+      </div>
     </div>
   </div>
 </template>

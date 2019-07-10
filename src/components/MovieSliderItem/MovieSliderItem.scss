@@ -1,21 +1,17 @@
+$slideBorderWidth: '3px';
+$slideScale: '1.2';
+
 .MovieSliderItem {
   margin: 0 .25rem;
   height: 10rem;
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-  border: 3px solid transparent;
-  &__details {
-    padding: .5rem 1rem 2rem 1rem;
-    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent);
-    visibility: hidden;
-    opacity: 0;
-    transition: all .3s ease-in-out;
-  }
+  border: #{$slideBorderWidth} solid transparent;
   &:after {
     content: none;
     position: absolute;
-    top: calc(100% + 3px);
+    top: calc(100% + #{$slideBorderWidth});
     width: 0;
     height: 0;
     left: 50%;
@@ -23,6 +19,43 @@
     border-right: 1rem solid transparent;
     border-top: .75rem solid #fff;
     transform: translateX(-50%);
+  }
+
+  .MovieSliderItem {
+    &__details {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .3s ease-in-out;
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background-image: linear-gradient(0deg, rgba(0,0,0,.75) 0%, transparent);
+      }
+    }
+    &__title {
+      padding: .5rem 1rem 1.5rem;
+      background-image: linear-gradient(180deg, rgba(0,0,0,.7) 0%, transparent);
+    }
+    &__actions {
+      display: flex;
+      justify-content: space-between;
+      padding: .5rem 1rem;
+    }
+    &__btn {
+      padding: .5rem .25rem;
+      &--arrow {
+        transform: translateY(.75rem);
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 
@@ -38,7 +71,7 @@
     padding: 1rem 0;
     transition: all .3s ease-in-out !important;
     &:hover {
-      transform: scale(1.2) !important;
+      transform: scale(#{$slideScale}) !important;
       opacity: 1;
       .MovieSliderItem__details {
         visibility: visible;
@@ -73,12 +106,15 @@
     .Slider__slide--selected {
       .MovieSliderItem {
         border-color: #fff;
+        &:after {
+          content: '';
+        }
         .MovieSliderItem__details {
           visibility: visible;
           opacity: 1;
-        }
-        &:after {
-          content: '';
+          &:before {
+            bottom: 0;
+          }
         }
       }
     }
@@ -89,7 +125,7 @@
   .MovieSlider:not(:hover) {
     .Slider__slide {
       &--selected {
-        transform: scale(1.2) !important;
+        transform: scale(#{$slideScale}) !important;
         ~ .Slider__slide:not(:hover) {
           transform: translate3d(2rem, 0, 0) !important;
         }
