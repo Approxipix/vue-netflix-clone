@@ -6,12 +6,18 @@ A simple [Netflix](https://netflix.com) clone based on Vue powered by [Firebase]
 ![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example2.jpg?raw=true)
 ![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example1.jpg?raw=true)
 
+## Todo
+- [ ] Movie list with pagination with filter
+- [ ] Add movie to "my list"
+- [ ] Add movie page
+
 ## Tech stack
 
 * [Vue](https://github.com/vuejs/vue)
 * [Vuex](https://github.com/vuejs/vuex)
 * [Vue Router](https://github.com/vuejs/vue-router)
 * [Firebase](https://firebase.google.com)
+* [The Movie Database API](https://www.themoviedb.org)
 
 ## Config
 ### Step 1
