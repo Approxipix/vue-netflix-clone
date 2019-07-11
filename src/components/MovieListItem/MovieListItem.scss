@@ -1,6 +1,32 @@
 .MovieListItem {
-  min-height: 28rem;
+  height: 28rem;
   background-position: right top;
   background-repeat: no-repeat;
   background-size: cover;
+  &:hover {
+    .MovieListItem__details {
+      opacity: 1;
+    }
+  }
+  &__details {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    background-color: rgba(0,0,0,.7);
+
+  }
+  &__title {
+    font-size: 1.5rem;
+  }
+  &__description {
+    color: #fff;
+    display: -webkit-box;
+    -webkit-line-clamp: 15;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
