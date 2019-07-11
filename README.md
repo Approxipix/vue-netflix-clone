@@ -7,9 +7,9 @@ A simple [Netflix](https://netflix.com) clone based on Vue powered by [Firebase]
 ![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example1.jpg?raw=true)
 
 ## Todo
-- [ ] Movie list with pagination with filter
+- [x] Movie list with pagination
 - [ ] Add movie to "my list"
-- [ ] Add movie page
+- [x] Add movie page
 
 ## Tech stack
 
