@@ -1,0 +1,35 @@
+.Pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3f3f3f;
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+  &__btn {
+    padding: .5rem 1rem;
+    color: #c0c0c0;
+    transition: all .2s ease-in-out;
+    &--active {
+      background: #e50914;
+      color: #c0c0c0;
+      cursor: default;
+    }
+    &:not(:disabled):hover {
+      color: #e50914;
+      background-color: #eee;
+    }
+    &:disabled {
+      cursor: default;
+    }
+  }
+  &__dots {
+    margin: 0 .5rem;
+    color: #999;
+  }
+}

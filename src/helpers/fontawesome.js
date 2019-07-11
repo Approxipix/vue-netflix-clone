@@ -8,6 +8,8 @@ import {
   faPlus,
   faPlay,
   faChevronDown,
+  faChevronRight,
+  faChevronLeft,
   faPlayCircle,
   faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
@@ -24,6 +26,8 @@ library.add(
   faPlus,
   faPlay,
   faChevronDown,
+  faChevronRight,
+  faChevronLeft,
   faPlayCircle,
   faPlusCircle,
 );
