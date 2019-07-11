@@ -6,12 +6,12 @@
     <div class="ProfileDropdown__arrow">
       <font-awesome-icon :icon="['fas', 'sort-down']" />
     </div>
-    <div class="ProfileDropdown__dropdown">
-      <div class="ProfileDropdown__dropdown-list">
-        <button class="btn ProfileDropdown__btn">
+    <div class="dropdown">
+      <div class="dropdown__list">
+        <button class="btn dropdown__btn">
           Manage Profiles
         </button>
-        <button class="btn ProfileDropdown__btn" v-on:click="onLogOut">
+        <button class="btn dropdown__btn" v-on:click="onLogOut">
           Sign out of Netflix
         </button>
       </div>
