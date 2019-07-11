@@ -30,7 +30,7 @@
     },
     methods: {
       getImageUrl: function (url, size) {
-        return getImageUrl(url, size)
+        return getImageUrl(url, size, 'backdrop')
       },
     },
   }

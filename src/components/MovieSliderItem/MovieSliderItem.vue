@@ -37,7 +37,7 @@
     },
     methods: {
       getImageUrl (url, size) {
-        return getImageUrl(url, size)
+        return getImageUrl(url, size, 'backdrop')
       },
       selectMovie (movie) {
         const slide = this.$el.parentNode;
