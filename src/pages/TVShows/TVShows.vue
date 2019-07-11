@@ -1,7 +1,7 @@
 <template>
   <div class="page__content">
-    <h1>TV Shows</h1>
-    <MovieList request-url="discover/tv"></MovieList>
+    <h1>TV Shows <span v-if="categoryTitle">({{categoryTitle}})</span></h1>
+    <MovieList :request-url="'discover/tv?with_genres=' + movieGenresId"></MovieList>
   </div>
 </template>
 
@@ -11,6 +11,43 @@
     components: {
       MovieList,
     },
+    data () {
+      return {
+        categoryTitle: '',
+        movieGenresId: +this.$route.params.id,
+      }
+    },
+    mounted() {
+      if (!!this.$store.getters.genres) {
+        this.setTitle()
+      }
+    },
+    computed: {
+      query () {
+        return this.$route.params.id
+      },
+      genres() {
+        return this.$store.getters.genres;
+      },
+    },
+    watch: {
+      query (value) {
+        if (value !== null && value !== undefined) {
+          this.movieGenresId = +this.$route.params.id;
+          this.setTitle();
+        }
+      },
+      genres(value) {
+        if (value !== null && value !== undefined) {
+          this.setTitle();
+        }
+      }
+    },
+    methods: {
+      setTitle () {
+        this.categoryTitle = this.genres.tv.find(item => item.id === this.movieGenresId).name
+      },
+    }
   }
 </script>
 

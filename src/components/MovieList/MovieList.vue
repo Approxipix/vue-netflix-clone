@@ -50,6 +50,13 @@
         })
       },
     },
+    watch: {
+      requestUrl (value) {
+        if (value !== null && value !== undefined) {
+          this.loadMovies()
+        }
+      }
+    },
     components: {
       MovieListItem,
       Pagination,

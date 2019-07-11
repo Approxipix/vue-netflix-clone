@@ -12,9 +12,19 @@
     <nav :class="[{'Header__nav--opened': isMenuOpened}, 'Header__nav']">
       <ul class="Header__nav-list">
         <li class="Header__nav-item" v-for="(item,index) in navList" :key="index">
-          <router-link :to="item.link" class="Header__nav-link">
+          <router-link v-if="!dropDowns[item.title]" :to="item.link" class="Header__nav-link">
             {{item.title}}
           </router-link>
+          <div v-else class="Header__nav-link">
+            {{item.title}}
+            <div class="dropdown">
+              <div v-for="(option, index) in dropDowns[item.title]" :key="index" class="dropdown__list">
+                <router-link :to="`/${item.link}/${option.id}`" class="dropdown__btn">
+                  {{option.name}}
+                </router-link>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
     </nav>
@@ -39,8 +49,27 @@
     data() {
       return {
         navList: navigationList,
+        dropDowns: {},
         isScrolled: false,
         isMenuOpened: false,
+      }
+    },
+    mounted () {
+      return this.$store.dispatch("setGenres");
+    },
+    computed: {
+      genres() {
+        return this.$store.getters.genres;
+      }
+    },
+    watch: {
+      genres(value) {
+        if (value !== null && value !== undefined) {
+          this.dropDowns = {
+            'Movies': value.movies,
+            'TV Shows': value.tv,
+          };
+        }
       }
     },
     methods: {
