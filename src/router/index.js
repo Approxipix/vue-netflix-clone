@@ -8,6 +8,8 @@ import RecoverPassword from '@/pages/RecoverPassword/RecoverPassword';
 import RecoverPasswordSuccess from '@/pages/RecoverPassword/RecoverPasswordSuccess';
 import RecoverPasswordForm from '@/pages/RecoverPassword/RecoverPasswordForm';
 import Home from '@/pages/Home/Home';
+import Movies from '@/pages/Movies/Movies';
+import TVShows from '@/pages/TVShows/TVShows';
 
 Vue.use(Router);
 
@@ -55,7 +57,23 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: '/movies',
+      name: 'Movies',
+      component: Movies,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/tv-shows',
+      name: 'TVShows',
+      component: TVShows,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 });
 
