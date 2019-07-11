@@ -43,6 +43,8 @@
           this.movieList = response.data.results;
           this.currentPage = response.data.page;
           this.totalPages = response.data.total_pages < 1000 ? response.data.total_pages : 1000;
+        }).then(() => {
+          window.scrollTo(0, 0);
         }).catch((error) => {
           console.log(error)
         })
