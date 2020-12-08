@@ -37,7 +37,7 @@
             </div>
             <ul class="form__error-list">
               <li class="form__error-item" v-for="(error, index) in errors.password" :key="index">
-                {{error}}
+                {{ error }}
               </li>
             </ul>
             <ul class="form__required-list">
@@ -79,7 +79,7 @@
             </div>
             <ul class="form__error-list">
               <li class="form__error-item" v-for="(error, index) in errors.confirmPassword" :key="index">
-                {{error}}
+                {{ error }}
               </li>
             </ul>
           </div>
@@ -100,9 +100,9 @@
 export default {
   data() {
     return {
-      email: "",
-      password: "",
-      confirmPassword: "",
+      email: '',
+      password: '',
+      confirmPassword: '',
       errors: {
         password: [],
         confirmPassword: [],
@@ -115,14 +115,14 @@ export default {
     },
     loading() {
       return this.$store.getters.loading;
-    }
+    },
   },
   watch: {
     user(value) {
       if (value !== null && value !== undefined) {
-        this.$router.push("/profile");
+        this.$router.push('/profile');
       }
-    }
+    },
   },
   methods: {
     isFormValid() {
@@ -132,16 +132,16 @@ export default {
         confirmPassword: [],
       };
       if (password !== confirmPassword) {
-        this.errors.confirmPassword.push('Passwords do not match.')
+        this.errors.confirmPassword.push('Passwords do not match.');
       }
       if (password.length < 6) {
-        this.errors.password.push('Password should be at least 6 characters.')
+        this.errors.password.push('Password should be at least 6 characters.');
       }
       if (password === password.toLowerCase() || password === password.toUpperCase()) {
-        this.errors.password.push('Contains at least one uppercase and lowercase characters.')
+        this.errors.password.push('Contains at least one uppercase and lowercase characters.');
       }
       if (!this.isLatin(password)) {
-        this.errors.password.push('Latin characters and numbers only.')
+        this.errors.password.push('Latin characters and numbers only.');
       }
       return Object.values(this.errors).every(field => field.length === 0);
     },
@@ -151,15 +151,11 @@ export default {
     },
     onSignUp() {
       if (!this.isFormValid()) return null;
-      this.$store.dispatch("signUp", {
+      this.$store.dispatch('signUp', {
         email: this.email,
         password: this.password
       });
     },
-  }
+  },
 };
 </script>
-
-<style lang="scss">
-  @import "SignUp";
-</style>

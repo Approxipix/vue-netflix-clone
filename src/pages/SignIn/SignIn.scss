@@ -1,12 +1,11 @@
+@import './src/assets/scss/helpers/variables';
+
 .SignIn {
   .SignIn {
     &__social {
       &-list {
-        margin-top: 3rem;
+        margin-top: 5rem;
         margin-bottom: 1rem;
-      }
-      &-item {
-
       }
       &-btn {
         display: flex;

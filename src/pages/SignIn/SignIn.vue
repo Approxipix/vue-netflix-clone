@@ -101,8 +101,8 @@
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       rememberMe: false,
     };
   },
@@ -129,32 +129,32 @@ export default {
     },
     loading() {
       return this.$store.getters.loading;
-    }
+    },
   },
   watch: {
     user(value) {
       if (value !== null && value !== undefined) {
-        this.$router.push("/profile");
+        this.$router.push('/profile');
       }
-    }
+    },
   },
   methods: {
     onSignIn() {
-      this.$store.dispatch("signIn", {
+      this.$store.dispatch('signIn', {
         email: this.email,
         password: this.password,
         rememberMe: this.rememberMe,
       });
     },
     onSignInGoogle() {
-      this.$store.dispatch("signInGoogle");
+      this.$store.dispatch('signInGoogle');
     },
     onSignInFacebook () {
       this.$store.dispatch('signInFacebook')
     },
     onDismissed() {
-      this.$store.dispatch("clearError");
-    }
+      this.$store.dispatch('clearError');
+    },
   },
   destroyed() {
     this.onDismissed();
@@ -163,5 +163,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "SignIn";
+  @import 'SignIn';
 </style>
