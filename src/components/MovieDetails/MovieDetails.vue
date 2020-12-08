@@ -6,8 +6,12 @@
         {{ movie.title || movie.name }}
       </h1>
       <div class="MovieDetails__labels">
-        <span class="MovieDetails__rate">{{ rate }} Match</span>
-        <span class="MovieDetails__date">{{ releaseDate }}</span>
+        <span class="MovieDetails__rate">
+          {{ rate }} Match
+        </span>
+        <span class="MovieDetails__date">
+          {{ releaseDate }}
+        </span>
       </div>
       <div class="MovieDetails__details">
         <p class="MovieDetails__description">
