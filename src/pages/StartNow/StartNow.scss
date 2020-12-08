@@ -1,9 +1,11 @@
-@import "../../assets/scss/helpers/breakpoints";
+@import './src/assets/scss/helpers/breakpoints';
+@import './src/assets/scss/helpers/variables';
 
 .StartNow {
   position: relative;
   min-height: 100vh;
   padding: 1rem 1.5rem;
+
   &:before,
   &:after {
     content: '';
@@ -12,6 +14,7 @@
     right: 0;
     z-index: 10;
   }
+
   &:after {
     bottom: 0;
     height: 50%;
@@ -20,6 +23,7 @@
       content: none;
     }
   }
+
   &:before {
     top: 0;
     height: 10%;
@@ -48,11 +52,13 @@
         bottom: auto;
       }
     }
+
     &__title {
       position: relative;
       margin-bottom: 1rem;
       font-size: 2rem;
       font-weight: bold;
+      color: $white;
       @include sm {
         margin-bottom: 1.5rem;
         font-size: 3.75rem;
@@ -62,10 +68,12 @@
         font-size: 5rem;
       }
     }
+
     &__subtitle {
       margin-bottom: 1.5rem;
       font-weight: normal;
       font-size: 1.2rem;
+      color: $white;
       text-transform: uppercase;
       @include sm {
         margin-bottom: 2.5rem;
@@ -76,6 +84,7 @@
         font-size: 1.8rem;
       }
     }
+
     &__btn {
       padding: 1rem 1.5rem;
       font-size: 1.2rem;
