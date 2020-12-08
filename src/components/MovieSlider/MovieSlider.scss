@@ -3,4 +3,14 @@
     padding: 0 2rem;
     margin-bottom: 1.5rem;
   }
+  &__details {
+    position: absolute;
+    top: calc(100% - 1rem);
+    width: 100%;
+    min-height: 20rem;
+    z-index: 50;
+    .MovieDetails {
+      min-height: 30rem;
+    }
+  }
 }
