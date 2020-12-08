@@ -4,7 +4,7 @@
       <h1 class="tile__title">
         Recover Password
       </h1>
-      <div v-bind:is="error" v-if="error" class="form__error-message"></div>
+      <div v-bind:is="error" v-if="error" class="form__error-message" />
       <form @submit.prevent="onSignup">
         <div class="input__wrapper">
           <input
@@ -36,7 +36,7 @@
   export default {
     data() {
       return {
-        email: "",
+        email: '',
       };
     },
     computed: {
@@ -64,26 +64,22 @@
     watch: {
       user(value) {
         if (value !== null && value !== undefined) {
-          this.$router.push("/profile");
+          this.$router.push('/profile');
         }
-      }
+      },
     },
     methods: {
       onSignup() {
-        this.$store.dispatch("recoverPasswordWithEmail", {
+        this.$store.dispatch('recoverPasswordWithEmail', {
           email: this.email,
         });
       },
       onDismissed() {
-        this.$store.dispatch("clearError");
-      }
+        this.$store.dispatch('clearError');
+      },
     },
     destroyed() {
       this.onDismissed();
     },
   };
 </script>
-
-<style lang="scss">
-  @import "RecoverPassword";
-</style>

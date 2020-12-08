@@ -85,8 +85,8 @@
   export default {
     data() {
       return {
-        password: "",
-        confirmPassword: "",
+        password: '',
+        confirmPassword: '',
         errors: {
           password: [],
           confirmPassword: [],
@@ -107,9 +107,9 @@
     watch: {
       user(value) {
         if (value !== null && value !== undefined) {
-          this.$router.push("/profile");
+          this.$router.push('/profile');
         }
-      }
+      },
     },
     methods: {
       isFormValid() {
@@ -138,18 +138,14 @@
       },
       onSignup() {
         if (!this.isFormValid()) return null;
-        this.$store.dispatch("recoverPassword", {
+        this.$store.dispatch('recoverPassword', {
           newPassword: this.password,
           code: this.$route.query.oobCode,
         });
       },
       onDismissed() {
-        this.$store.dispatch("clearError");
-      }
-    }
+        this.$store.dispatch('clearError');
+      },
+    },
   };
 </script>
-
-<style lang="scss">
-
-</style>
