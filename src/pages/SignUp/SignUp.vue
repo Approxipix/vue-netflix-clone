@@ -9,12 +9,12 @@
           <div class="form__field">
             <div class="input__wrapper">
               <input
-                :class="[{'input--filled': email}, 'input']"
                 id="email"
-                placeholder="Email"
                 type="email"
-                v-model="email"
                 required
+                placeholder="Email"
+                v-model="email"
+                :class="[{'input--filled': email}, 'input']"
               >
               <label class="input__placeholder" for="email">
                 Email
@@ -24,19 +24,19 @@
           <div class="form__field">
             <div :class="[{'input--error': errors.password.length !== 0}, 'input__wrapper']">
               <input
-                :class="[{'input--filled': password}, 'input']"
                 id="password"
-                placeholder="password"
-                v-model="password"
                 type="password"
                 required
+                placeholder="password"
+                v-model="password"
+                :class="[{'input--filled': password}, 'input']"
               >
               <label class="input__placeholder" for="password">
                 Password
               </label>
             </div>
             <ul class="form__error-list">
-              <li class="form__error-item" v-for="(error, index) in errors.password" :key="index">
+              <li :key="index" class="form__error-item" v-for="(error, index) in errors.password">
                 {{ error }}
               </li>
             </ul>
@@ -66,19 +66,19 @@
           <div class="form__field">
             <div :class="[{'input--error': errors.password.length !== 0}, 'input__wrapper']">
               <input
-                :class="[{'input--filled': confirmPassword}, 'input']"
                 id="confirm-password"
-                placeholder="Confirm Password"
-                v-model="confirmPassword"
                 type="password"
                 required
+                placeholder="Confirm Password"
+                v-model="confirmPassword"
+                :class="[{'input--filled': confirmPassword}, 'input']"
               >
               <label class="input__placeholder" for="confirm-password">
                 Confirm Password
               </label>
             </div>
             <ul class="form__error-list">
-              <li class="form__error-item" v-for="(error, index) in errors.confirmPassword" :key="index">
+              <li :key="index" class="form__error-item" v-for="(error, index) in errors.confirmPassword">
                 {{ error }}
               </li>
             </ul>

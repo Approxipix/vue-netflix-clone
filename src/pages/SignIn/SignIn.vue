@@ -5,17 +5,17 @@
         <h1 class="tile__title">
           Sign In
         </h1>
-        <div v-bind:is="error" v-if="error" class="form__error-message"></div>
+        <div v-bind:is="error" v-if="error" class="form__error-message" />
         <form @submit.prevent="onSignIn" class="form">
           <div class="form__field">
             <div class="input__wrapper">
               <input
-                :class="[{'input--filled': email}, 'input']"
                 id="email"
-                placeholder="Email"
-                v-model="email"
                 type="email"
                 required
+                placeholder="Email"
+                v-model="email"
+                :class="[{'input--filled': email}, 'input']"
               >
               <label class="input__placeholder" for="email">
                 Email
@@ -25,12 +25,12 @@
           <div class="form__field">
             <div class="input__wrapper">
               <input
-                :class="[{'input--filled': password}, 'input']"
                 id="password"
-                placeholder="Password"
-                v-model="password"
                 type="password"
                 required
+                placeholder="Password"
+                v-model="password"
+                :class="[{'input--filled': password}, 'input']"
               >
               <label class="input__placeholder" for="password">
                 Password
@@ -46,16 +46,21 @@
           </button>
           <div class="flex-jc">
             <div class="checkbox__wrapper">
-              <input v-model="rememberMe" id="rememberMeCheckbox"  type="checkbox" class="checkbox__input">
-              <label for="rememberMeCheckbox" class="checkbox">
-              <span>
-                <svg width="12px" height="10px" viewBox="0 0 12 10">
-                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                </svg>
-              </span>
+              <input
+                id="rememberMeCheckbox"
+                type="checkbox"
+                class="checkbox__input"
+                v-model="rememberMe"
+              >
+                <label for="rememberMeCheckbox" class="checkbox">
+                <span>
+                  <svg width="12px" height="10px" viewBox="0 0 12 10">
+                    <polyline points="1.5 6 4.5 9 10.5 1" />
+                  </svg>
+                </span>
                 <span class="checkbox__text">
-                Remember me
-              </span>
+                  Remember me
+                </span>
               </label>
             </div>
             <a href="https://www.netflix.com/LoginHelp" class="link link--s">

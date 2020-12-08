@@ -2,7 +2,7 @@
   <div class="Home">
     <div class="Home__main-slider">
       <Slider ref="slider" :options="options">
-        <div v-for="(movie,index) in movieList" :key="index" :class="`slide--${index}`">
+        <div :key="index" :class="`slide--${index}`" v-for="(movie,index) in movieList">
           <MovieDetails :movie="movie" />
         </div>
       </Slider>

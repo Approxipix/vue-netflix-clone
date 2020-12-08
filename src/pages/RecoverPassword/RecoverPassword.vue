@@ -8,13 +8,13 @@
       <form @submit.prevent="onSignup">
         <div class="input__wrapper">
           <input
-            :class="[{'input--filled': email}, 'input']"
-            name="email"
             id="email"
-            v-model="email"
+            name="email"
             type="email"
             required
             placeholder="Email"
+            v-model="email"
+            :class="[{'input--filled': email}, 'input']"
           >
           <label class="input__placeholder" for="email">
             Email
