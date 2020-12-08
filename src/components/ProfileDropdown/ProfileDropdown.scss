@@ -1,6 +1,9 @@
+@import './src/assets/scss/helpers/variables';
+
 .ProfileDropdown {
   display: flex;
   align-items: center;
+
   &:hover {
     .dropdown {
       visibility: visible;
@@ -31,7 +34,7 @@
       height: 1.5rem;
       margin-right: .25rem;
       border-radius: .25rem;
-      background-color: #c9c74e;
+      background-color: $yellow;
     }
     &__arrow {
       padding: .25rem;

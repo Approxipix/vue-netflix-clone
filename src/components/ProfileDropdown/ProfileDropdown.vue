@@ -1,8 +1,6 @@
 <template>
   <div class="ProfileDropdown">
-    <div class="ProfileDropdown__avatar">
-
-    </div>
+    <div class="ProfileDropdown__avatar" />
     <div class="ProfileDropdown__arrow">
       <font-awesome-icon :icon="['fas', 'sort-down']" />
     </div>
@@ -21,19 +19,19 @@
 
 <script>
   export default {
-    data () {
+    data() {
       return {
         isDropdownOpened: false,
-      }
+      };
     },
     methods: {
       onLogOut() {
-        this.$store.dispatch("logout");
+        this.$store.dispatch('logout');
       },
-    }
+    },
   }
 </script>
 
 <style lang="scss">
-  @import "ProfileDropdown";
+  @import 'ProfileDropdown';
 </style>
