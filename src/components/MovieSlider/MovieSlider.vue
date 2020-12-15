@@ -1,14 +1,16 @@
 <template>
   <div class="MovieSlider__wrapper">
     <h2 class="MovieSlider__title">{{ categoryTitle }}</h2>
-    <div v-click-outside="clickOut">
-      <Slider ref="slider" :options="options" :class="{'Slider--has-selected': isOpened && selectedMovie}">
-        <div :key="index" v-for="(movie,index) in movieList" :class="`slide--${index}`">
-          <MovieSliderItem :movie="movie" :isOpened="isOpened" v-on:select-movie="selectMovie" />
+    <div v-click-outside="unselectMovie">
+      <Slider ref="slider" :options="options" :class="{ 'Slider--has-selected': selectedMovie }">
+        <div v-for="(movie, index) in movieList" :key="index" :class="`slide--${index}`">
+          <MovieSliderItem :movie="movie" v-on:select-movie="selectMovie" />
         </div>
       </Slider>
-      <div v-if="isOpened" class="MovieSlider__details">
-        <MovieDetails v-if="isOpened" :movie="selectedMovie" />
+      <div v-if="selectedMovie" class="MovieSlider__details">
+        <div @click.stop>
+          <MovieDetails :movie="selectedMovie" />
+        </div>
       </div>
     </div>
   </div>
@@ -19,7 +21,7 @@
   import Slider from '../../components/Slider/Slider.vue';
   import MovieSliderItem from '../../components/MovieSliderItem/MovieSliderItem.vue';
   import MovieDetails from '../../components/MovieDetails/MovieDetails.vue';
-  import clickOutside from '../../helpers/directives/clickOutside';
+  import clickOutside from '../../directives/clickOutside';
 
   export default {
     name: 'MovieSlider',
@@ -27,18 +29,10 @@
       categoryTitle: String,
       requestUrl: String,
     },
-    components: {
-      Slider,
-      MovieSliderItem,
-      MovieDetails,
-    },
-    directives: {
-      clickOutside,
-    },
     data() {
       return {
         movieList: [],
-        isOpened: false,
+        selectedMovie: null,
         options: {
           dots: false,
           navButtons: false,
@@ -50,27 +44,22 @@
         }
       };
     },
-    computed: {
-      selectedMovie() {
-        return this.$store.getters.selectedMovie;
-      },
+    components: {
+      Slider,
+      MovieSliderItem,
+      MovieDetails,
+    },
+    directives: {
+      clickOutside,
     },
     methods: {
       selectMovie(movie) {
-        if (this.selectedMovie && this.selectedMovie.id === movie.id) {
-          this.$store.dispatch('selectMovie', null);
-          this.toggleModal(false);
-        } else {
-          this.$store.dispatch('selectMovie', movie);
-          this.toggleModal(true);
-        }
+        if (this.selectedMovie && this.selectedMovie.id === movie.id) this.selectedMovie = null;
+        else this.selectedMovie = movie;
       },
-      toggleModal(state) {
-        this.isOpened = state !== undefined ? state : !this.isOpened;
+      unselectMovie() {
+        this.selectedMovie = null;
       },
-      clickOut() {
-        this.toggleModal(false);
-      }
     },
     mounted() {
       this.$refs.slider.toggleLoading();

@@ -1,3 +1,5 @@
+@import "../../assets/scss/helpers/variables";
+
 $slideBorderWidth: '3px';
 $slideScale: '1.2';
 
@@ -8,6 +10,7 @@ $slideScale: '1.2';
   background-repeat: no-repeat;
   background-size: cover;
   border: #{$slideBorderWidth} solid transparent;
+
   &:after {
     content: none;
     position: absolute;
@@ -21,41 +24,40 @@ $slideScale: '1.2';
     transform: translateX(-50%);
   }
 
-  .MovieSliderItem {
-    &__details {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      visibility: hidden;
-      opacity: 0;
-      transition: all .3s ease-in-out;
-      &:before {
-        content: '';
-        position: absolute;
-        bottom: -3px;
-        left: 0;
-        width: 100%;
-        height: 40%;
-        background-image: linear-gradient(0deg, rgba(0,0,0,.75) 0%, transparent);
-      }
+  &__details {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: .5rem 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, .7) 0%, transparent);
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background-image: linear-gradient(0deg, rgba(0, 0, 0, .75) 0%, transparent);
     }
-    &__title {
-      padding: .5rem 1rem 1.5rem;
-      background-image: linear-gradient(180deg, rgba(0,0,0,.7) 0%, transparent);
+    .MovieLabels {
+      font-size: .75rem;
     }
-    &__actions {
-      display: flex;
-      justify-content: space-between;
-      padding: .5rem 1rem;
-    }
-    &__btn {
-      padding: .5rem .25rem;
-      &--arrow {
-        transform: translateY(.75rem);
-        font-size: 1.5rem;
-      }
-    }
+  }
+
+  &__title {
+    margin-bottom: .25rem;
+  }
+
+  &__btn {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    font-size: 1.25rem;
+    color: $white;
   }
 }
 
@@ -67,6 +69,7 @@ $slideScale: '1.2';
       opacity: .3;
     }
   }
+
   .Slider__slide {
     padding: 1rem 0;
     transition: all .3s ease-in-out !important;
@@ -102,10 +105,11 @@ $slideScale: '1.2';
 
 .Slider--has-selected {
   z-index: 55;
+
   .MovieSlider {
     .Slider__slide--selected {
       .MovieSliderItem {
-        border-color: #fff;
+        border-color: $white;
         &:after {
           content: '';
         }
@@ -118,10 +122,12 @@ $slideScale: '1.2';
         }
       }
     }
+
     > * {
       transform: scale(1) translate3d(-2rem, 0, 0) !important;
     }
   }
+
   .MovieSlider:not(:hover) {
     .Slider__slide {
       &--selected {

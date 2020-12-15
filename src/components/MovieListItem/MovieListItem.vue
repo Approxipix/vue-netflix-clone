@@ -5,7 +5,7 @@
         {{ movie.title ? movie.title : movie.name }}
       </h3>
       <MovieLabels :movie="movie" />
-      <p class="MovieListItem__overview">
+      <p class="MovieListItem__description">
         {{ movie.overview }}
       </p>
     </div>

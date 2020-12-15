@@ -7,6 +7,7 @@
   background-size: cover;
   transition: all .3s ease-in-out;
   cursor: pointer;
+
   &:hover {
     transform: scale(1.05);
     .MovieListItem__details {
@@ -31,7 +32,7 @@
     font-size: 1.5rem;
   }
 
-  &__overview {
+  &__description {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;

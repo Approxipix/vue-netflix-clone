@@ -1,8 +1,4 @@
-/** FontAwesomeIcons */
-import {
-  library
-} from '@fortawesome/fontawesome-svg-core';
-
+import { library} from '@fortawesome/fontawesome-svg-core';
 import {
   faSortDown,
   faPlus,
@@ -12,11 +8,11 @@ import {
   faChevronLeft,
   faPlayCircle,
   faPlusCircle,
+  faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
-
 import {
   faFacebook,
-  faGoogle
+  faGoogle,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -30,4 +26,5 @@ library.add(
   faChevronLeft,
   faPlayCircle,
   faPlusCircle,
+  faInfoCircle,
 );
