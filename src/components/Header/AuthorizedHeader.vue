@@ -1,10 +1,10 @@
 <template>
-  <header :class="[{'Header--bg': isScrolled}, 'Header']">
+  <header :class="[{ 'Header--bg': isScrolled }, 'Header']">
     <router-link :to="homeRoute">
       <NetflixLogo class="Header__logo" />
     </router-link>
 
-    <nav :class="[{'Header__nav--opened': isMenuOpened}, 'Header__nav']">
+    <nav :class="[{ 'Header__nav--opened': isMenuOpened }, 'Header__nav']">
       <ul class="Header__nav-list">
         <li class="Header__nav-item" v-for="(navItem, index) in navList" :key="index">
           <router-link v-if="!navItem.nav" class="Header__nav-link" :to="navItem.link">
@@ -26,7 +26,7 @@
 
     <div class="Header__actions">
       <ProfileDropdown />
-      <button :class="[{'hamburger--active': isMenuOpened}, 'hamburger', 'button']" v-on:click="toggleSidebar">
+      <button :class="[{ 'hamburger--active': isMenuOpened }, 'hamburger', 'button']" v-on:click="toggleSidebar">
         <span />
         <span />
         <span />

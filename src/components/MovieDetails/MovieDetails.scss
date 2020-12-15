@@ -1,4 +1,4 @@
-@import './src/assets//scss//helpers/variables';
+@import "../../assets/scss/helpers/variables";
 
 .MovieDetails {
   width: 100%;
@@ -54,7 +54,15 @@
 
   &__rate {
     margin-right: .5rem;
-    color: $green;
+    &--green {
+      color: $green;
+    }
+    &--yellow {
+      color: $yellow;
+    }
+    &--red {
+      color: $red;
+    }
   }
 
   &__description {
