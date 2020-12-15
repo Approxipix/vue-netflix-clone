@@ -1,4 +1,4 @@
-@import "../helpers/mixins";
+@import "../helpers/variables";
 
 .btn {
   position: relative;
@@ -6,7 +6,7 @@
   width: auto;
   padding: .3rem .9rem;
   font-size: 1rem;
-  color: #fff;
+  color: $white;
   text-align: center;
   white-space: nowrap;
   border-radius: .18rem;
@@ -14,17 +14,42 @@
   outline: none;
   cursor: pointer;
   transition: background-color .1s ease-out;
-  &--red {
-    background-color: #dc0913;
-    box-shadow: 0 1px 0 rgba(0,0,0,.45);
-    &:hover {
-      background: #f40612;
-    }
-  }
   &:not(:last-child) {
     margin-right: .5rem;
   }
+
   @include sm {
     padding: .4rem 1.1rem;
+  }
+
+  &--red {
+    background-color: $primary-btn;
+    box-shadow: 0 1px 0 rgba(0,0,0,.45);
+    &:hover {
+      background: $primary-btn-hover;
+    }
+  }
+
+  &--close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 24px;
+    height: 24px;
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: $white;
+    }
+    &:before {
+      position: relative;
+      transform: translateY(50%) rotate(45deg);
+    }
+    &:after {
+      transform: translateY(-50%) rotate(-45deg);
+    }
   }
 }

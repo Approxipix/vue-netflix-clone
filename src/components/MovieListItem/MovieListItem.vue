@@ -1,26 +1,39 @@
 <template>
   <div class="MovieListItem" :style="{ backgroundImage: 'url(' + getImageUrl(movie.poster_path, 3) + ')' }">
-    <div class="MovieListItem__details">
+    <div class="MovieListItem__details" @click="selectMovie">
       <h3 class="MovieListItem__title">
-        {{!!movie.title ? movie.title : movie.name}}
+        {{ movie.title ? movie.title : movie.name }}
       </h3>
-      <p class="MovieListItem__description">
-        {{movie.overview}}
+      <MovieLabels :movie="movie" />
+      <p class="MovieListItem__overview">
+        {{ movie.overview }}
       </p>
     </div>
   </div>
 </template>
 
 <script>
-  import getImageUrl from '../../helpers/getImageUrl'
+  import MovieLabels from '../MovieLabels/MovieLabels';
+  import getImageUrl from '../../helpers/getImageUrl';
+
   export default {
     name: 'MovieListItem',
     props: {
-      movie: Object,
+      movie: {
+        name: String,
+        title: String,
+        overview: String,
+      },
+    },
+    components: {
+      MovieLabels,
     },
     methods: {
-      getImageUrl: function (url, size) {
-        return getImageUrl(url, size, 'poster')
+      getImageUrl(url, size) {
+        return getImageUrl(url, size, 'poster');
+      },
+      selectMovie() {
+        this.$emit('select-movie', this.movie);
       },
     },
   }

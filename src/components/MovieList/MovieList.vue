@@ -2,10 +2,17 @@
   <div>
     <div class="MovieList">
       <MovieListItem
+        v-for="(movie, index) in movieList"
         :key="index"
-        v-for="(movie, index) in movieList" 
         :movie="movie"
+        v-on:select-movie="selectMovie"
       />
+    </div>
+    <div v-if="selectedMovie" class="MovieList__details-backdrop" @click="unselectMovie">
+      <div @click.stop class="MovieList__details">
+        <MovieDetails :movie="selectedMovie" />
+        <button type="button" class="btn--close" @click="unselectMovie" />
+      </div>
     </div>
     <Pagination
       :current-page="currentPage"
@@ -18,6 +25,7 @@
 <script>
   import axios from 'axios';
   import MovieListItem from '../MovieListItem/MovieListItem';
+  import MovieDetails from '../MovieDetails/MovieDetails';
   import Pagination from '../Pagination/Pagination';
 
   export default {
@@ -25,28 +33,35 @@
     props: {
       requestUrl: String,
     },
-    components: {
-      MovieListItem,
-      Pagination,
-    },
     data () {
       return {
         movieList: [],
+        selectedMovie: null,
         currentPage: 1,
         totalPages: 0,
       };
     },
-    mounted() {
-      this.loadMovies();
+    components: {
+      MovieListItem,
+      MovieDetails,
+      Pagination,
+    },
+    watch: {
+      requestUrl(value) {
+        if (value !== null && value !== undefined) {
+          this.loadMovies();
+        }
+      }
     },
     methods: {
       loadMovies() {
-        let { query, } = this.$route;
+        let { query } = this.$route;
+        const params = { page: 1 };
         for (let key in query) {
-          query[key] = decodeURIComponent(query[key]);
+          params[key] = decodeURIComponent(query[key]);
         }
-        query = { page: 1, ...query };
-        axios.get(`https://api.themoviedb.org/3/${this.requestUrl}`, { params: query })
+
+        axios.get(`https://api.themoviedb.org/3/${this.requestUrl}`, { params })
           .then(response => {
             this.movieList = response.data.results;
             this.currentPage = response.data.page;
@@ -57,15 +72,17 @@
           })
           .catch(error => {
             console.log(error);
-          })
+          });
+      },
+      selectMovie(movie) {
+        this.selectedMovie = movie;
+      },
+      unselectMovie() {
+        this.selectedMovie = null;
       },
     },
-    watch: {
-      requestUrl(value) {
-        if (value !== null && value !== undefined) {
-          this.loadMovies();
-        }
-      }
+    mounted() {
+      this.loadMovies();
     },
   }
 </script>

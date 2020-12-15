@@ -1,6 +1,25 @@
+@import "../../assets/scss/helpers/variables";
+
 .MovieList {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 1rem;
   margin-bottom: 1rem;
+
+  &__details {
+    width: 80%;
+    height: 80%;
+    &-backdrop {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: $z-index-modal;
+      background-color: rgba(0, 0, 0, .85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
