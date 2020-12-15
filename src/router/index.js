@@ -10,6 +10,8 @@ import RecoverPasswordForm from '@/pages/RecoverPassword/RecoverPasswordForm';
 import Home from '@/pages/Home/Home';
 import Movies from '@/pages/Movies/Movies';
 import TVShows from '@/pages/TVShows/TVShows';
+import Popular from '@/pages/Popular/Popular';
+import { routes } from '../helpers/constants';
 
 Vue.use(Router);
 
@@ -21,68 +23,76 @@ const router = new Router({
       redirect: '/',
     },
     {
-      path: '/',
+      path: routes.startNow,
       name: 'StartNow',
-      component: StartNow
+      component: StartNow,
     },
     {
-      path: '/sign-in',
+      path: routes.signIn,
       name: 'SignIn',
-      component: SignIn
+      component: SignIn,
     },
     {
-      path: '/sign-up',
+      path: routes.signUp,
       name: 'SignUp',
-      component: SignUp
+      component: SignUp,
     },
     {
-      path: '/recover-password',
+      path: routes.recoverPassword,
       name: 'RecoverPassword',
-      component: RecoverPassword
+      component: RecoverPassword,
     },
     {
-      path: '/recover-password/success',
+      path: routes.recoverPasswordSuccess,
       name: 'RecoverPasswordSuccess',
-      component: RecoverPasswordSuccess
+      component: RecoverPasswordSuccess,
     },
     {
-      path: '/recover-password/:code',
+      path: routes.recoverPasswordCode,
       name: 'RecoverPasswordForm',
-      component: RecoverPasswordForm
+      component: RecoverPasswordForm,
     },
     {
-      path: '/home',
+      path: routes.home,
       name: 'Home',
       component: Home,
       meta: {
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     {
-      path: '/movies/:id',
+      path: routes.movies,
       name: 'Movies',
       component: Movies,
       meta: {
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     {
-      path: '/tv-shows/:id',
+      path: routes.tvShows,
       name: 'TVShows',
       component: TVShows,
       meta: {
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
-  ]
+    {
+      path: routes.popular,
+      name: 'Popular',
+      component: Popular,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+  ],
 });
 
 router.beforeEach((to, from, next) => {
   const currentUser = firebase.auth().currentUser;
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-  if (requiresAuth && !currentUser) next('sign-in');
-  else if (!requiresAuth && currentUser) next('home');
+  if (requiresAuth && !currentUser) next(routes.signIn);
+  else if (!requiresAuth && currentUser) next(routes.home);
   else next();
 });
 
