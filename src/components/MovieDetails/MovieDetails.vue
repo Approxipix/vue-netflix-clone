@@ -5,14 +5,7 @@
       <h1 class="MovieDetails__title">
         {{ movie.title || movie.name }}
       </h1>
-      <div class="MovieDetails__labels">
-        <span :class="['MovieDetails__rate', `MovieDetails__rate--${movieRateColor}`]">
-          {{ movieRate }} Match
-        </span>
-        <span class="MovieDetails__date">
-          {{ movieReleaseDate }}
-        </span>
-      </div>
+      <MovieLabels :movie="movie" />
       <div class="MovieDetails__details">
         <p class="MovieDetails__description">
           {{ movie.overview }}
@@ -30,6 +23,7 @@
 </template>
 
 <script>
+  import MovieLabels from '../MovieLabels/MovieLabels';
   import getImageUrl from '../../helpers/getImageUrl';
 
   export default {
@@ -40,26 +34,11 @@
         name: String,
         title: String,
         overview: String,
-        vote_average: Number,
-        release_date: String,
-        first_air_date: String,
         genre_ids: Array,
         backdrop_path: String,
       },
     },
     computed: {
-      movieRate() {
-        return `${this.movie.vote_average * 10}%`;
-      },
-      movieRateColor() {
-        const percent = this.movie.vote_average * 10;
-        if (percent < 30) return 'red';
-        if (percent < 50) return 'yellow';
-        return 'green';
-      },
-      movieReleaseDate() {
-        return new Date(this.movie.release_date || this.movie.first_air_date).toLocaleDateString();
-      },
       movieGenres() {
         if (!this.$store.getters.genres) return '';
         return this.$store.getters.genres.movies
@@ -67,6 +46,9 @@
           .map(({ name }) => name)
           .join(', ');
       },
+    },
+    components: {
+      MovieLabels,
     },
     methods: {
       getBackgroundImageUrl(url, size) {

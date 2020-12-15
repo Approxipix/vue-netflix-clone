@@ -52,19 +52,6 @@
     line-height: 3rem;
   }
 
-  &__rate {
-    margin-right: .5rem;
-    &--green {
-      color: $green;
-    }
-    &--yellow {
-      color: $yellow;
-    }
-    &--red {
-      color: $red;
-    }
-  }
-
   &__description {
     font-size: 1.2rem;
     color: $gray;
