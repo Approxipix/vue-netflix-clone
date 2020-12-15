@@ -14,11 +14,7 @@
         <button type="button" class="btn--close" @click="unselectMovie" />
       </div>
     </div>
-    <Pagination
-      :current-page="currentPage"
-      :total-pages="totalPages"
-      @load-movies="loadMovies"
-    />
+    <Pagination :current-page="currentPage" :total-pages="totalPages" @load="loadMovies" />
   </div>
 </template>
 
@@ -51,7 +47,7 @@
         if (value !== null && value !== undefined) {
           this.loadMovies();
         }
-      }
+      },
     },
     methods: {
       loadMovies() {

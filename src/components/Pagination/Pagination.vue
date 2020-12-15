@@ -48,26 +48,18 @@
     computed: {
       getPages () {
         return this.getVisiblePages(this.currentPage, this.totalPages);
-      }
+      },
     },
     methods: {
       getVisiblePages (page, total) {
-        if (total < 8) {
-          return [1, 2, 3, 4, 5, 6, 7].filter(page => page <= total);
-        } else {
-          if (page > 4 && page + 2 < total) {
-            return [1, page - 2, page - 1, page, page + 1, page + 2, total];
-          } else if (page > 4 && page + 3 >= total) {
-            return [1, total - 5, total - 4, total - 3, total - 2, total - 1, total];
-          } else {
-            return [1, 2, 3, 4, 5, 6, total];
-          }
-        }
+        if (total < 8) return [1, 2, 3, 4, 5, 6, 7].filter(page => page <= total);
+        if (page > 4 && page + 2 < total) return [1, page - 2, page - 1, page, page + 1, page + 2, total];
+        if (page > 4 && page + 3 >= total) return [1, total - 5, total - 4, total - 3, total - 2, total - 1, total];
+        return [1, 2, 3, 4, 5, 6, total];
       },
       pageChange(page) {
-        let { query } = this.$route;
         if (page !== this.currentPage) {
-          let params = { ...query, page: +page || 1 };
+          let params = { ...this.$route.query, page: +page || 1 };
           this.updateQuery(params);
         }
       },
@@ -76,12 +68,12 @@
           .filter(key => {
             if (key === '') return false;
             if (params[key] instanceof Array) return params[key].length > 0;
-            else return params[key] !== '';
+            return params[key] !== '';
           })
           .map(key => key + '=' + params[key]).join('&');
 
         this.$router.push(`?${newQuery}`);
-        this.$emit('load-movies');
+        this.$emit('load');
       }
     },
   }
