@@ -1,26 +1,21 @@
 <template>
   <header :class="[{'Header--bg': isScrolled}, 'Header']">
-
-    <div class="Header__logo">
-      <svg viewBox="0 0 111 30" focusable="true">
-        <g id="netflix-logo">
-          <path d="M105.062 14.28L111 30c-1.75-.25-3.499-.563-5.28-.845l-3.345-8.686-3.437 7.969c-1.687-.282-3.344-.376-5.031-.595l6.031-13.75L94.468 0h5.063l3.062 7.874L105.875 0h5.124l-5.937 14.28zM90.47 0h-4.594v27.25c1.5.094 3.062.156 4.594.343V0zm-8.563 26.937c-4.187-.281-8.375-.53-12.656-.625V0h4.687v21.875c2.688.062 5.375.28 7.969.405v4.657zM64.25 10.657v4.687h-6.406V26H53.22V0h13.125v4.687h-8.5v5.97h6.406zm-18.906-5.97V26.25c-1.563 0-3.156 0-4.688.062V4.687h-4.844V0h14.406v4.687h-4.874zM30.75 15.593c-2.062 0-4.5 0-6.25.095v6.968c2.75-.188 5.5-.406 8.281-.5v4.5l-12.968 1.032V0H32.78v4.687H24.5V11c1.813 0 4.594-.094 6.25-.094v4.688zM4.78 12.968v16.375C3.094 29.531 1.593 29.75 0 30V0h4.469l6.093 17.032V0h4.688v28.062c-1.656.282-3.344.376-5.125.625L4.78 12.968z"></path>
-        </g>
-      </svg>
-    </div>
+    <router-link :to="homeRoute">
+      <NetflixLogo class="Header__logo" />
+    </router-link>
 
     <nav :class="[{'Header__nav--opened': isMenuOpened}, 'Header__nav']">
       <ul class="Header__nav-list">
-        <li class="Header__nav-item" v-for="(item,index) in navList" :key="index">
-          <router-link v-if="!dropDowns[item.title]" :to="item.link" class="Header__nav-link">
-            {{item.title}}
+        <li class="Header__nav-item" v-for="(navItem, index) in navList" :key="index">
+          <router-link v-if="!navItem.nav" class="Header__nav-link" :to="navItem.link">
+            {{ navItem.title }}
           </router-link>
           <div v-else class="Header__nav-link">
-            {{item.title}}
+            {{ navItem.title }}
             <div class="dropdown">
-              <div v-for="(option, index) in dropDowns[item.title]" :key="index" class="dropdown__list">
-                <router-link :to="`/${item.link}/${option.id}`" class="dropdown__btn">
-                  {{option.name}}
+              <div class="dropdown__list" v-for="(dropdownItem, index) in navItem.nav" :key="index">
+                <router-link class="dropdown__btn" :to="`${navItem.link}/${dropdownItem.id}`">
+                  {{ dropdownItem.name }}
                 </router-link>
               </div>
             </div>
@@ -32,74 +27,76 @@
     <div class="Header__actions">
       <ProfileDropdown />
       <button :class="[{'hamburger--active': isMenuOpened}, 'hamburger', 'button']" v-on:click="toggleSidebar">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
       </button>
     </div>
-
   </header>
 </template>
 
 <script>
-  import navigationList from './NavigationList'
-  import ProfileDropdown from '../ProfileDropdown/ProfileDropdown'
+  import ProfileDropdown from '../ProfileDropdown/ProfileDropdown';
+  import NetflixLogo from '../../assets/images/netflix.svg';
+  import { routes, actions } from '../../helpers/constants';
 
   export default {
+    name: 'AuthorizedHeader',
     data() {
       return {
-        navList: navigationList,
-        dropDowns: {},
         isScrolled: false,
         isMenuOpened: false,
-      }
-    },
-    mounted () {
-      return this.$store.dispatch("setGenres");
+        homeRoute: routes.home,
+        navList: [
+          { title: 'Home', link: routes.home },
+          { title: 'TV Shows', link: routes.tvShows, nav: [] },
+          { title: 'Movies', link: routes.movies, nav: [] },
+          { title: 'Popular', link: routes.popular },
+          { title: 'My List', link: routes.myList },
+        ],
+      };
     },
     computed: {
       genres() {
         return this.$store.getters.genres;
-      }
+      },
+    },
+    components: {
+      ProfileDropdown,
+      NetflixLogo,
     },
     watch: {
       genres(value) {
         if (value !== null && value !== undefined) {
-          this.dropDowns = {
-            'Movies': value.movies,
-            'TV Shows': value.tv,
-          };
-        }
-      }
-    },
-    methods: {
-      handleScroll () {
-        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        if (currentScrollPosition > 50) {
-          return this.isScrolled = true;
-        } else {
-          return this.isScrolled = false;
+          this.navList = this.navList.map(item => {
+            if (item.title === 'TV Shows') return { ...item, nav: value.tv };
+            if (item.title === 'Movies') return { ...item, nav: value.movies };
+            return item;
+          });
         }
       },
-      toggleSidebar () {
-        this.isMenuOpened = !this.isMenuOpened;
-        if (this.isMenuOpened) {
-          document.documentElement.classList.add('no-scroll');
-        } else {
-          document.documentElement.classList.remove('no-scroll');
-
-        }
-      }
     },
-    created () {
+    methods: {
+      handleScroll() {
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScrollPosition > 50) return this.isScrolled = true;
+        else return this.isScrolled = false;
+      },
+      toggleSidebar() {
+        this.isMenuOpened = !this.isMenuOpened;
+        if (this.isMenuOpened) document.documentElement.classList.add('no-scroll');
+        else document.documentElement.classList.remove('no-scroll');
+      },
+    },
+    created() {
       window.addEventListener('scroll', this.handleScroll);
     },
-    destroyed () {
+    mounted() {
+      return this.$store.dispatch(actions.setGenres);
+    },
+    destroyed() {
       window.removeEventListener('scroll', this.handleScroll);
     },
-    components: {
-      ProfileDropdown,
-    }
   };
 </script>
 
