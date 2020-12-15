@@ -6,11 +6,8 @@
     </div>
     <div class="dropdown">
       <div class="dropdown__list">
-        <button class="btn dropdown__btn">
-          Manage Profiles
-        </button>
         <button class="btn dropdown__btn" v-on:click="onLogOut">
-          Sign out of Netflix
+          Logout
         </button>
       </div>
     </div>
@@ -18,6 +15,8 @@
 </template>
 
 <script>
+  import { actions } from '../../helpers/constants';
+
   export default {
     data() {
       return {
@@ -26,7 +25,7 @@
     },
     methods: {
       onLogOut() {
-        this.$store.dispatch('logout');
+        this.$store.dispatch(actions.logout);
       },
     },
   }

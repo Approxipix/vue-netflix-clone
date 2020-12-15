@@ -11,6 +11,17 @@
     }
   }
 
+  &__avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: .25rem;
+    border-radius: .25rem;
+    background-color: $yellow;
+  }
+  &__arrow {
+    padding: .25rem;
+  }
+
   .dropdown {
     right: 0;
     padding: 0;
@@ -25,19 +36,6 @@
       &:after {
         bottom: .5rem;
       }
-    }
-  }
-
-  .ProfileDropdown {
-    &__avatar {
-      width: 1.5rem;
-      height: 1.5rem;
-      margin-right: .25rem;
-      border-radius: .25rem;
-      background-color: $yellow;
-    }
-    &__arrow {
-      padding: .25rem;
     }
   }
 }
