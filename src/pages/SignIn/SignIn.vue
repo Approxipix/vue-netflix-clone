@@ -15,7 +15,7 @@
                 required
                 placeholder="Email"
                 v-model="email"
-                :class="[{'input--filled': email}, 'input']"
+                :class="[{ 'input--filled': email }, 'input']"
               >
               <label class="input__placeholder" for="email">
                 Email
@@ -30,7 +30,7 @@
                 required
                 placeholder="Password"
                 v-model="password"
-                :class="[{'input--filled': password}, 'input']"
+                :class="[{ 'input--filled': password }, 'input']"
               >
               <label class="input__placeholder" for="password">
                 Password
@@ -95,76 +95,85 @@
           </li>
         </ul>
         <p>
-          New to netflix? <router-link class="link link--white" to="sign-up">Sign up now.</router-link>
+          New to netflix? <router-link class="link link--white" :to="signUpRoute">Sign up now.</router-link>
         </p>
+      </div>
+      <div class="Spinner__overflow" v-if="loading">
+        <Spinner />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      email: '',
-      password: '',
-      rememberMe: false,
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.getters.user;
-    },
-    error() {
-      let template = '';
-      if (!this.$store.getters.error) return null;
-      switch (this.$store.getters.error.code) {
-        case ('auth/user-not-found'):
-          template = "<div>Sorry, we can\'t find an account with this email address. Please try again or <router-link to='/sign-up'>create a new account.</router-link></div>";
-          break;
-        case ('auth/wrong-password'):
-          template = "<div><b>Incorrect password.</b> Please try again or you can <router-link to='/recover-password'>reset your password.</router-link></div>";
-          break;
-        default:
-          template = '';
-      }
+  import Spinner from '../../components/Spinner/Spinner'
+  import { routes, actions } from '../../helpers/constants';
+
+  export default {
+    data() {
       return {
-        template: template,
+        email: '',
+        password: '',
+        rememberMe: false,
+        signUpRoute: routes.signUp,
       };
     },
-    loading() {
-      return this.$store.getters.loading;
+    computed: {
+      user() {
+        return this.$store.getters.user;
+      },
+      error() {
+        let template = '';
+        if (!this.$store.getters.error) return null;
+        switch (this.$store.getters.error.code) {
+          case ('auth/user-not-found'):
+            template = "<div>Sorry, we can\'t find an account with this email address. Please try again or " +
+              "<router-link to='/sign-up'>create a new account.</router-link></div>";
+            break;
+          case ('auth/wrong-password'):
+            template = "<div><b>Incorrect password.</b> Please try again or you can " +
+              "<router-link to='/recover-password'>reset your password.</router-link></div>";
+            break;
+          default:
+            template = '';
+        }
+        return {
+          template: template,
+        };
+      },
+      loading() {
+        return this.$store.getters.loading;
+      },
     },
-  },
-  watch: {
-    user(value) {
-      if (value !== null && value !== undefined) {
-        this.$router.push('/profile');
-      }
+    components: {
+      Spinner,
     },
-  },
-  methods: {
-    onSignIn() {
-      this.$store.dispatch('signIn', {
-        email: this.email,
-        password: this.password,
-        rememberMe: this.rememberMe,
-      });
+    watch: {
+      user(value) {
+        if (value !== null && value !== undefined) {
+          this.$router.push(routes.home);
+        }
+      },
     },
-    onSignInGoogle() {
-      this.$store.dispatch('signInGoogle');
+    methods: {
+      onSignIn() {
+        this.$store.dispatch(actions.signIn, {
+          email: this.email,
+          password: this.password,
+          rememberMe: this.rememberMe,
+        });
+      },
+      onSignInGoogle() {
+        this.$store.dispatch(actions.signInGoogle);
+      },
+      onSignInFacebook () {
+        this.$store.dispatch(actions.signInFacebook)
+      },
     },
-    onSignInFacebook () {
-      this.$store.dispatch('signInFacebook')
+    destroyed() {
+      this.$store.dispatch(actions.clearError);
     },
-    onDismissed() {
-      this.$store.dispatch('clearError');
-    },
-  },
-  destroyed() {
-    this.onDismissed();
-  },
-};
+  };
 </script>
 
 <style lang="scss">

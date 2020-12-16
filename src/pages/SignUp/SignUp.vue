@@ -14,7 +14,7 @@
                 required
                 placeholder="Email"
                 v-model="email"
-                :class="[{'input--filled': email}, 'input']"
+                :class="[{ 'input--filled': email }, 'input']"
               >
               <label class="input__placeholder" for="email">
                 Email
@@ -29,7 +29,7 @@
                 required
                 placeholder="password"
                 v-model="password"
-                :class="[{'input--filled': password}, 'input']"
+                :class="[{ 'input--filled': password }, 'input']"
               >
               <label class="input__placeholder" for="password">
                 Password
@@ -41,22 +41,22 @@
               </li>
             </ul>
             <ul class="form__required-list">
-              <li :class="[{'form__required-item--done': password.length >= 6}, 'form__required-item']">
+              <li :class="[{ 'form__required-item--done': password.length >= 6 }, 'form__required-item']">
                 <span class="form__required-text">
                   At least 6 characters long
                 </span>
               </li>
-              <li :class="[{'form__required-item--done': password !== password.toLowerCase()}, 'form__required-item']">
+              <li :class="[{ 'form__required-item--done': password !== password.toLowerCase() }, 'form__required-item']">
                 <span class="form__required-text">
                   One uppercase character
                 </span>
               </li>
-              <li :class="[{'form__required-item--done': password !== password.toUpperCase()}, 'form__required-item']">
+              <li :class="[{ 'form__required-item--done': password !== password.toUpperCase() }, 'form__required-item']">
                 <span class="form__required-text">
                   One lowercase character
                 </span>
               </li>
-              <li :class="[{'form__required-item--done': isLatin(password)}, 'form__required-item']">
+              <li :class="[{ 'form__required-item--done': isLatin(password) }, 'form__required-item']">
                 <span class="form__required-text">
                   Latin characters only
                 </span>
@@ -64,14 +64,14 @@
             </ul>
           </div>
           <div class="form__field">
-            <div :class="[{'input--error': errors.password.length !== 0}, 'input__wrapper']">
+            <div :class="[{ 'input--error': errors.password.length !== 0 }, 'input__wrapper']">
               <input
                 id="confirm-password"
                 type="password"
                 required
                 placeholder="Confirm Password"
                 v-model="confirmPassword"
-                :class="[{'input--filled': confirmPassword}, 'input']"
+                :class="[{ 'input--filled': confirmPassword }, 'input']"
               >
               <label class="input__placeholder" for="confirm-password">
                 Confirm Password
@@ -92,70 +92,79 @@
           </button>
         </form>
       </div>
+      <div class="Spinner__overflow" v-if="loading">
+        <Spinner />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      errors: {
-        password: [],
-        confirmPassword: [],
-      },
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.getters.user;
-    },
-    loading() {
-      return this.$store.getters.loading;
-    },
-  },
-  watch: {
-    user(value) {
-      if (value !== null && value !== undefined) {
-        this.$router.push('/profile');
-      }
-    },
-  },
-  methods: {
-    isFormValid() {
-      const { password, confirmPassword } = this;
-      this.errors = {
-        password: [],
-        confirmPassword: [],
+  import Spinner from '../../components/Spinner/Spinner'
+  import { routes, actions } from '../../helpers/constants';
+
+  export default {
+    data() {
+      return {
+        email: '',
+        password: '',
+        confirmPassword: '',
+        errors: {
+          password: [],
+          confirmPassword: [],
+        },
       };
-      if (password !== confirmPassword) {
-        this.errors.confirmPassword.push('Passwords do not match.');
-      }
-      if (password.length < 6) {
-        this.errors.password.push('Password should be at least 6 characters.');
-      }
-      if (password === password.toLowerCase() || password === password.toUpperCase()) {
-        this.errors.password.push('Contains at least one uppercase and lowercase characters.');
-      }
-      if (!this.isLatin(password)) {
-        this.errors.password.push('Latin characters and numbers only.');
-      }
-      return Object.values(this.errors).every(field => field.length === 0);
     },
-    isLatin(password) {
-      let ifLatin =  /^[a-zA-z0-9_]+$/g;
-      return ifLatin.test(password);
+    computed: {
+      user() {
+        return this.$store.getters.user;
+      },
+      loading() {
+        return this.$store.getters.loading;
+      },
     },
-    onSignUp() {
-      if (!this.isFormValid()) return null;
-      this.$store.dispatch('signUp', {
-        email: this.email,
-        password: this.password
-      });
+    components: {
+      Spinner,
     },
-  },
-};
+    watch: {
+      user(value) {
+        if (value !== null && value !== undefined) {
+          this.$router.push(routes.home);
+        }
+      },
+    },
+    methods: {
+      isFormValid() {
+        const { password, confirmPassword } = this;
+        this.errors = {
+          password: [],
+          confirmPassword: [],
+        };
+        if (password !== confirmPassword) {
+          this.errors.confirmPassword.push('Passwords do not match.');
+        }
+        if (password.length < 6) {
+          this.errors.password.push('Password should be at least 6 characters.');
+        }
+        if (password === password.toLowerCase() || password === password.toUpperCase()) {
+          this.errors.password.push('Contains at least one uppercase and lowercase characters.');
+        }
+        if (!this.isLatin(password)) {
+          this.errors.password.push('Latin characters and numbers only.');
+        }
+        return Object.values(this.errors).every(field => field.length === 0);
+      },
+      isLatin(password) {
+        let ifLatin =  /^[a-zA-z0-9_]+$/g;
+        return ifLatin.test(password);
+      },
+      onSignUp() {
+        if (!this.isFormValid()) return null;
+        this.$store.dispatch(actions.signUp, {
+          email: this.email,
+          password: this.password
+        });
+      },
+    },
+  };
 </script>

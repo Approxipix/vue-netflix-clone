@@ -14,6 +14,11 @@ export const routes = {
 };
 
 export const actions = {
+  signUp: 'signUp',
+  signIn: 'signIn',
+  signInGoogle: 'signInGoogle',
+  signInFacebook: 'signInFacebook',
   logout: 'logout',
+  clearError: 'clearError',
   setGenres: 'setGenres',
 };
