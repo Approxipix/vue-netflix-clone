@@ -99,7 +99,7 @@
           New to netflix? <router-link class="link link--white" :to="signUpRoute">Sign up now.</router-link>
         </p>
       </div>
-      <div class="Spinner__overflow" v-if="loading">
+      <div class="Spinner__overflow" v-show="loading">
         <Spinner />
       </div>
     </div>
