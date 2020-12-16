@@ -5,7 +5,7 @@
         Recover Password
       </h1>
       <div v-bind:is="error" v-if="error" class="form__error-message" />
-      <form @submit.prevent="onSignup">
+      <form @submit.prevent="onRecoverPassword">
         <div class="input__wrapper">
           <input
             id="email"
@@ -14,7 +14,7 @@
             required
             placeholder="Email"
             v-model="email"
-            :class="[{'input--filled': email}, 'input']"
+            :class="[{ 'input--filled': email }, 'input']"
           >
           <label class="input__placeholder" for="email">
             Email
@@ -29,10 +29,16 @@
         </button>
       </form>
     </div>
+    <div class="Spinner__overflow" v-if="loading">
+      <Spinner />
+    </div>
   </div>
 </template>
 
 <script>
+  import Spinner from '../../components/Spinner/Spinner'
+  import { actions } from "../../helpers/constants";
+
   export default {
     data() {
       return {
@@ -48,7 +54,8 @@
         if (!this.$store.getters.error) return null;
         switch (this.$store.getters.error.code) {
           case ('auth/user-not-found'):
-            template = "<div>Sorry, we can\'t find an account with this email address. Please try again or <router-link to='/sign-up'>create a new account.</router-link></div>";
+            template = "<div>Sorry, we can\'t find an account with this email address. Please try again or " +
+              "<router-link to='/sign-up'>create a new account.</router-link></div>";
             break;
           default:
             template = '';
@@ -61,25 +68,18 @@
         return this.$store.getters.loading;
       }
     },
-    watch: {
-      user(value) {
-        if (value !== null && value !== undefined) {
-          this.$router.push('/profile');
-        }
-      },
+    components: {
+      Spinner,
     },
     methods: {
-      onSignup() {
-        this.$store.dispatch('recoverPasswordWithEmail', {
+      onRecoverPassword() {
+        this.$store.dispatch(actions.recoverPasswordWithEmail, {
           email: this.email,
         });
       },
-      onDismissed() {
-        this.$store.dispatch('clearError');
-      },
     },
     destroyed() {
-      this.onDismissed();
+      this.$store.dispatch(actions.clearError);
     },
   };
 </script>

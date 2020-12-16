@@ -4,9 +4,9 @@
       <h1 class="tile__title">
         Recover Password
       </h1>
-      <form @submit.prevent="onSignup">
+      <form @submit.prevent="onRecoverPassword">
         <div class="form__field">
-          <div :class="[{'input--error': errors.password.length !== 0}, 'input__wrapper']">
+          <div :class="[{ 'input--error': errors.password.length !== 0 }, 'input__wrapper']">
             <input
               id="password"
               name="password"
@@ -14,7 +14,7 @@
               required
               placeholder="password"
               v-model="password"
-              :class="[{'input--filled': password}, 'input']"
+              :class="[{ 'input--filled': password }, 'input']"
             >
             <label class="input__placeholder" for="password">
               Password
@@ -22,26 +22,26 @@
           </div>
           <ul class="form__error-list">
             <li :key="index" class="form__error-item" v-for="(error, index) in errors.password">
-              {{error}}
+              {{ error }}
             </li>
           </ul>
           <ul class="form__required-list">
-            <li :class="[{'form__required-item--done': password.length >= 8}, 'form__required-item']">
+            <li :class="[{ 'form__required-item--done': password.length >= 8 }, 'form__required-item']">
               <span class="form__required-text">
                 At least 8 characters long
               </span>
             </li>
-            <li :class="[{'form__required-item--done': password !== password.toLowerCase()}, 'form__required-item']">
+            <li :class="[{ 'form__required-item--done': password !== password.toLowerCase() }, 'form__required-item']">
               <span class="form__required-text">
                 One uppercase character
               </span>
             </li>
-            <li :class="[{'form__required-item--done': password !== password.toUpperCase()}, 'form__required-item']">
+            <li :class="[{ 'form__required-item--done': password !== password.toUpperCase() }, 'form__required-item']">
               <span class="form__required-text">
                 One lowercase character
               </span>
             </li>
-            <li :class="[{'form__required-item--done': isLatin(password)}, 'form__required-item']">
+            <li :class="[{ 'form__required-item--done': isLatin(password) }, 'form__required-item']">
               <span class="form__required-text">
                 Latin characters only
               </span>
@@ -49,7 +49,7 @@
           </ul>
         </div>
         <div class="form__field">
-          <div :class="[{'input--error': errors.password.length !== 0}, 'input__wrapper']">
+          <div :class="[{ 'input--error': errors.password.length !== 0 }, 'input__wrapper']">
             <input
               id="confirm-password"
               name="confirm-password"
@@ -57,7 +57,7 @@
               required
               placeholder="Confirm Password"
               v-model="confirmPassword"
-              :class="[{'input--filled': confirmPassword}, 'input']"
+              :class="[{ 'input--filled': confirmPassword }, 'input']"
             >
             <label class="input__placeholder" for="confirm-password">
               Confirm Password
@@ -78,10 +78,16 @@
         </button>
       </form>
     </div>
+    <div class="Spinner__overflow" v-if="loading">
+      <Spinner />
+    </div>
   </div>
 </template>
 
 <script>
+  import Spinner from '../../components/Spinner/Spinner'
+  import { routes, actions } from "../../helpers/constants";
+
   export default {
     data() {
       return {
@@ -104,10 +110,13 @@
         return this.$store.getters.loading;
       }
     },
+    components: {
+      Spinner,
+    },
     watch: {
       user(value) {
         if (value !== null && value !== undefined) {
-          this.$router.push('/profile');
+          this.$router.push(routes.home);
         }
       },
     },
@@ -136,16 +145,16 @@
         let ifLatin =  /^[a-zA-z0-9_]+$/g;
         return ifLatin.test(password);
       },
-      onSignup() {
+      onRecoverPassword() {
         if (!this.isFormValid()) return null;
-        this.$store.dispatch('recoverPassword', {
+        this.$store.dispatch(actions.recoverPassword, {
           newPassword: this.password,
           code: this.$route.query.oobCode,
         });
       },
-      onDismissed() {
-        this.$store.dispatch('clearError');
-      },
+    },
+    destroyed() {
+      this.$store.dispatch(actions.clearError);
     },
   };
 </script>
