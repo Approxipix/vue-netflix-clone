@@ -69,13 +69,11 @@
             </li>
           </ul>
         </div>
-        <button
-          type="submit"
-          class="btn btn--red form__btn"
-          :disabled="loading"
-        >
-          Change Password
-        </button>
+        <div class="form__btns">
+          <button type="submit" class="btn btn--primary" :disabled="loading">
+            Change Password
+          </button>
+        </div>
       </form>
     </div>
     <div class="Spinner__overflow" v-if="loading">

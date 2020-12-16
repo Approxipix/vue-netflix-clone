@@ -2,7 +2,7 @@
   <header class="Header--un">
     <NetflixLogo class="Header__logo Header__logo--un" />
     <div class="Header__actions">
-      <router-link v-if="routePath !== signInRoute" class="btn btn--red" :to="signInRoute">
+      <router-link v-if="routePath !== signInRoute" class="btn btn--primary" :to="signInRoute">
         Sign in
       </router-link>
     </div>

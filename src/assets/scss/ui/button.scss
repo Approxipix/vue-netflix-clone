@@ -10,10 +10,9 @@
   text-align: center;
   white-space: nowrap;
   border-radius: .18rem;
-  border: none;
   outline: none;
   cursor: pointer;
-  transition: background-color .1s ease-out;
+  transition: all .2s ease-out;
   &:not(:last-child) {
     margin-right: .5rem;
   }
@@ -22,11 +21,21 @@
     padding: .4rem 1.1rem;
   }
 
-  &--red {
+  &--primary {
+    border: 1px solid $primary-btn;
     background-color: $primary-btn;
     box-shadow: 0 1px 0 rgba(0,0,0,.45);
     &:hover {
       background: $primary-btn-hover;
+    }
+  }
+
+  &--secondary {
+    border: 1px solid $primary-btn;
+    background-color: transparent;
+    box-shadow: 0 1px 0 rgba(0,0,0,.45);
+    &:hover {
+      border-color: $primary-btn-hover;
     }
   }
 
