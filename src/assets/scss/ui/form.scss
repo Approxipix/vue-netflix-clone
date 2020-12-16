@@ -1,7 +1,9 @@
 .form {
+
   &__field {
     margin-bottom: 1rem;
   }
+
   &__btns {
     margin-top: 1.5rem;
     margin-bottom: .5rem;
@@ -14,6 +16,7 @@
       }
     }
   }
+
   &__error {
     &-list {
       margin-top: .275rem;
@@ -21,21 +24,22 @@
     }
     &-item {
       padding: .175rem 0;
-      color: #e87c03;
+      color: $orange;
       font-size: .815rem;
     }
     &-message {
       margin-bottom: 1rem;
       padding: .625rem 1.25rem;
       font-size: .875rem;
-      background: #e87c03;
+      background: $orange;
       border-radius: .25rem;
       a {
-        color: #fff;
+        color: $white;
         text-decoration: underline;
       }
     }
   }
+
   &__required {
     &-list {
       display: grid;
@@ -56,13 +60,13 @@
         width: .4rem;
         height: .4rem;
         border-radius: 50%;
-        background-color: #dc0913;
+        background-color: $red;
         transition: all .2s ease-in-out;
       }
       &--done {
-        color: #737373;
+        color: $gray600;
         &:before {
-          background-color: #737373;
+          background-color: $gray600;
         }
         & .SignUp__required-text:after {
           left: 0;
@@ -80,7 +84,7 @@
         left: 50%;
         right: 50%;
         top: 55%;
-        background-color: #737373;
+        background-color: $gray600;
         transition: all .2s ease-in-out;
       }
     }

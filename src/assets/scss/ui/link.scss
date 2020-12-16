@@ -1,12 +1,15 @@
 .link {
   font-size: 1rem;
-  color: #b3b3b3;
+  color: $gray400;
+
   &:hover {
     text-decoration: underline;
   }
+
   &--white {
-    color: #fff;
+    color: $white;
   }
+
   &--s {
     font-size: .81rem;
   }

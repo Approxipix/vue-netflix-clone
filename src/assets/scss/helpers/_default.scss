@@ -5,8 +5,8 @@ html {
 body {
 	font-family: Helvetica, Arial ,sans-serif;
 	font-size: 16px;
-	color: #fff;
-	background: #1a1a1a;
+	color: $white;
+	background: $gray900;
 }
 
 button {
@@ -39,60 +39,60 @@ textarea {
 
 input,
 textarea {
-	appearance: none;
+  appearance: none;
 }
 
 a {
-	text-decoration: none;
-	color: #b3b3b3;
+  text-decoration: none;
+  color: $gray400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 0;
+  margin: 0;
 }
 
 p {
-	color: #737373;
+  color: $gray600;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .content-area {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .no-scroll {
-	height: 100%;
-	overflow: hidden;
-	position: static;
-	width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: static;
+  width: 100%;
 }
 
 .no-transition {
-	transition: none!important;
-	transition-duration: 0s!important;
+  transition: none!important;
+  transition-duration: 0s!important;
 }
 
 .bg {
-	background-image: url("./assets/images/background/website.jpg");
-	background-position: center center;
+  background-image: url("./assets/images/background/website.jpg");
+  background-position: center center;
 }
 
 .flex-jc {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .page__content {
-	padding: 3rem 2rem 0;
+  padding: 3rem 2rem 0;
 }

@@ -1,5 +1,3 @@
-@import "../helpers/variables";
-
 .btn {
   position: relative;
   display: inline-block;
@@ -33,7 +31,7 @@
   &--secondary {
     border: 1px solid $primary-btn;
     background-color: transparent;
-    box-shadow: 0 1px 0 rgba(0,0,0,.45);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .45);
     &:hover {
       border-color: $primary-btn-hover;
     }

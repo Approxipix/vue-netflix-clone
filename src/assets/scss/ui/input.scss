@@ -2,37 +2,42 @@
   position: relative;
   width: 100%;
   border-radius: .25rem;
-  background: #333;
+  background: $gray800;
   border: 0;
-  color: #fff;
+  color: $white;
   font-size: 1rem;
   padding: 1rem 1.25rem 0;
   height: 3rem;
   outline: none;
+
   &::placeholder {
     color: transparent;
   }
+
   &--filled,
   &:focus {
-    background: #454545;
+    background: $gray700;
     + .input__placeholder {
       top: .7rem;
       font-size: .68rem;
     }
   }
+
   &__wrapper {
     position: relative;
     border-radius: .25rem;
   }
+
   &__placeholder {
     position: absolute;
     font-size: 1rem;
     top: 50%;
     left: 1.25rem;
-    color: #8c8c8c;
+    color: $gray500;
     transition: font .1s ease,top .1s ease,transform .1s ease;
     transform: translateY(-50%);
   }
+
   &--error {
     &:after {
       content: '';
@@ -41,7 +46,7 @@
       left: 0;
       width: 100%;
       height: .25rem;
-      border-bottom: 2px solid #e87c03;
+      border-bottom: 2px solid $orange;
       border-bottom-right-radius: .25rem;
       border-bottom-left-radius: .25rem;
     }
