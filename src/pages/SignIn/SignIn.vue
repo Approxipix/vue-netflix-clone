@@ -37,13 +37,14 @@
               </label>
             </div>
           </div>
-          <button
-            type="submit"
-            class="btn btn--red form__btn"
-            :disabled="loading"
-          >
-            Sign In
-          </button>
+          <div class="form__btns">
+            <button type="submit" class="btn btn--primary" :disabled="loading">
+              Sign In
+            </button>
+            <button type="button" class="btn btn--secondary" :disabled="loading" @click="onSignInAnonymously">
+              Demo User
+            </button>
+          </div>
           <div class="flex-jc">
             <div class="checkbox__wrapper">
               <input
@@ -168,6 +169,9 @@
       },
       onSignInFacebook () {
         this.$store.dispatch(actions.signInFacebook)
+      },
+      onSignInAnonymously () {
+        this.$store.dispatch(actions.signInAnonymously)
       },
     },
     destroyed() {

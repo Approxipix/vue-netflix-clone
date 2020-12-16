@@ -113,6 +113,30 @@ export default {
           commit(actions.setError, error);
         });
     },
+
+    signInAnonymously({ commit }) {
+      commit(actions.setLoading, true);
+      commit(actions.clearError);
+      firebase
+        .auth()
+        .signInAnonymously()
+        .then(user => {
+          commit(actions.setLoading, false);
+          this.dispatch(actions.setConfiguration);
+          const newUser = {
+            id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            photoUrl: user.photoURL,
+          };
+          commit(actions.setUser, newUser);
+        })
+        .catch(error => {
+          commit(actions.setLoading, false);
+          commit(actions.setError, error);
+        });
+    },
+
     recoverPasswordWithEmail({ commit }, payload) {
       commit(actions.setLoading, true);
       commit(actions.clearError);
