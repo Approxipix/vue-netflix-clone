@@ -1,74 +1,86 @@
 import axios from 'axios';
+import { actions } from '../../helpers/constants';
 
 export default {
   state: {
     loading: false,
     configuration: null,
     genres: null,
-    error: null
+    error: null,
   },
   mutations: {
-    setLoading (state, payload) {
-      state.loading = payload
+    setLoading(state, payload) {
+      state.loading = payload;
     },
-    setError (state, payload) {
-      state.error = payload
+    setError(state, payload) {
+      state.error = payload;
     },
-    clearError (state) {
-      state.error = null
+    clearError(state) {
+      state.error = null;
     },
-    setConfiguration (state, payload) {
+    setConfiguration(state, payload) {
       state.configuration = payload;
     },
-    setGenres (state, payload) {
+    setGenres(state, payload) {
       state.genres = payload;
     },
   },
   actions: {
-    clearError ({commit}) {
-      commit('clearError')
+    clearError({ commit }) {
+      commit(actions.clearError);
     },
-    setError ({commit}, payload) {
-      commit('setError', payload)
+
+    setError({ commit }, payload) {
+      commit(actions.setErro, payload);
     },
-    setConfiguration ({commit}) {
-      axios.get('https://api.themoviedb.org/3/configuration').then(response => {
-        commit('setConfiguration', response.data)
-      }).catch(error => {
-        commit('setError', error)
-      });
+
+    setConfiguration({ commit }) {
+      axios.get('https://api.themoviedb.org/3/configuration')
+        .then(response => {
+          commit(actions.setConfiguration, response.data);
+        })
+        .catch(error => {
+          commit(actions.setError, error);
+        });
     },
-    async setGenres ({commit}) {
+
+    async setGenres ({ commit }) {
       const genres = {
         tv: [],
         movies: []
       };
-      await axios.get('https://api.themoviedb.org/3/genre/movie/list').then(response => {
-        genres.movies = response.data.genres
-      }).catch(error => {
-        commit('setError', error)
-      });
-      await axios.get('https://api.themoviedb.org/3/genre/tv/list').then(response => {
-        genres.tv = response.data.genres
-      }).catch(error => {
-        commit('setError', error)
-      });
 
-      commit('setGenres', genres)
+      await axios.get('https://api.themoviedb.org/3/genre/movie/list')
+        .then(response => {
+          genres.movies = response.data.genres;
+        })
+        .catch(error => {
+          commit(actions.setErro, error);
+        });
+
+      await axios.get('https://api.themoviedb.org/3/genre/tv/list')
+        .then(response => {
+          genres.tv = response.data.genres;
+        })
+        .catch(error => {
+          commit(actions.setError, error);
+        });
+
+      commit(actions.setGenres, genres);
     }
   },
   getters: {
-    configuration (state) {
-      return state.configuration
+    configuration(state) {
+      return state.configuration;
     },
-    genres (state) {
-      return state.genres
+    genres(state) {
+      return state.genres;
     },
-    loading (state) {
-      return state.loading
+    loading(state) {
+      return state.loading;
     },
-    error (state) {
-      return state.error
+    error(state) {
+      return state.error;
     }
-  }
-}
+  },
+};

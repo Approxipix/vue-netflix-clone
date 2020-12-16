@@ -1,158 +1,165 @@
 import * as firebase from "firebase";
-import router from '../../router/index'
+import router from '../../router/index';
+import { routes, actions } from '../../helpers/constants';
 
 export default {
   state: {
-    user: null
+    user: null,
   },
   mutations: {
     setUser(state, payload) {
       state.user = payload;
-    }
+    },
   },
   actions: {
     signUp({ commit }, payload) {
-      commit("setLoading", true);
-      commit("clearError");
+      commit(actions.setLoading, true);
+      commit(actions.clearError);
       firebase
         .auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then(user => {
-          commit("setLoading", false);
+          commit(actions.setLoading, false);
           const newUser = {
             id: user.uid,
             name: user.displayName,
             email: user.email,
-            photoUrl: user.photoURL
+            photoUrl: user.photoURL,
           };
-          commit("setUser", newUser);
-          this.dispatch("setConfiguration");
+          commit(actions.setUser, newUser);
+          this.dispatch(actions.setConfiguration);
         })
         .catch(error => {
-          commit("setLoading", false);
-          commit("setError", error);
+          commit(actions.setLoading, false);
+          commit(actions.setError, error);
         });
     },
+
     signIn({ commit }, payload) {
-      commit("setLoading", true);
-      commit("clearError");
+      commit(actions.setLoading, true);
+      commit(actions.clearError);
       firebase
         .auth()
         .signInWithEmailAndPassword(payload.email, payload.password)
         .then(user => {
-          commit("setLoading", false);
-          this.dispatch("setConfiguration");
+          commit(actions.setLoading, false);
+          this.dispatch(actions.setConfiguration);
           const newUser = {
             id: user.uid,
             name: user.displayName,
             email: user.email,
-            photoUrl: user.photoURL
+            photoUrl: user.photoURL,
           };
-          commit("setUser", newUser);
+          commit(actions.setUser, newUser);
         })
         .catch(error => {
-          commit("setLoading", false);
-          commit("setError", error);
+          commit(actions.setLoading, false);
+          commit(actions.setError, error);
         });
     },
+
     autoSignIn({ commit }, payload) {
-      this.dispatch("setConfiguration");
-      commit("setUser", {
+      this.dispatch(actions.setConfiguration);
+      commit(actions.setUser, {
         id: payload.uid,
         name: payload.displayName,
         email: payload.email,
-        photoUrl: payload.photoURL
+        photoUrl: payload.photoURL,
       });
     },
+
     signInGoogle({ commit }) {
-      commit("setLoading", true);
-      commit("clearError");
+      commit(actions.setLoading, true);
+      commit(actions.clearError);
       firebase
         .auth()
         .signInWithPopup(new firebase.auth.GoogleAuthProvider())
         .then(user => {
-          commit("setLoading", false);
-          this.dispatch("setConfiguration");
+          commit(actions.setLoading, false);
+          this.dispatch(actions.setConfiguration);
           const newUser = {
             id: user.uid,
             name: user.displayName,
             email: user.email,
-            photoUrl: user.photoURL
+            photoUrl: user.photoURL,
           };
-          commit("setUser", newUser);
+          commit(actions.setUser, newUser);
         })
         .catch(error => {
-          commit("setLoading", false);
-          commit("setError", error);
+          commit(actions.setLoading, false);
+          commit(actions.setError, error);
         });
     },
+
     signInFacebook({ commit }) {
-      commit("setLoading", true);
-      commit("clearError");
+      commit(actions.setLoading, true);
+      commit(actions.clearError);
       firebase
         .auth()
         .signInWithPopup(new firebase.auth.FacebookAuthProvider())
         .then(user => {
-          commit("setLoading", false);
-          this.dispatch("setConfiguration");
+          commit(actions.setLoading, false);
+          this.dispatch(actions.setConfiguration);
           const newUser = {
             id: user.uid,
             name: user.displayName,
             email: user.email,
-            photoUrl: user.photoURL
+            photoUrl: user.photoURL,
           };
-          commit("setUser", newUser);
+          commit(actions.setUser, newUser);
         })
         .catch(error => {
-          commit("setLoading", false);
-          commit("setError", error);
+          commit(actions.setLoading, false);
+          commit(actions.setError, error);
         });
     },
     recoverPasswordWithEmail({ commit }, payload) {
-      commit("setLoading", true);
-      commit("clearError");
+      commit(actions.setLoading, true);
+      commit(actions.clearError);
       firebase
         .auth()
         .sendPasswordResetEmail(payload.email)
         .then(() => {
-          commit("setLoading", false);
-          router.push('/recover-password/success')
+          commit(actions.setLoading, false);
+          router.push(routes.recoverPasswordSuccess)
         })
         .catch(error => {
-          commit("setLoading", false);
-          commit("setError", error);
+          commit(actions.setLoading, false);
+          commit(actions.setError, error);
         });
     },
+
     recoverPassword({ commit }, payload) {
-      commit("setLoading", true);
-      commit("clearError");
+      commit(actions.setLoading, true);
+      commit(actions.clearError);
       firebase
         .auth()
         .confirmPasswordReset(payload.code, payload.newPassword)
         .then(user => {
-          commit("setLoading", false);
-          router.push('/profile');
-          this.dispatch("setConfiguration");
+          commit(actions.setLoading, false);
+          router.push(routes.home);
+          this.dispatch(actions.setConfiguration);
           const newUser = {
             id: user.uid,
             name: user.displayName,
             email: user.email,
-            photoUrl: user.photoURL
+            photoUrl: user.photoURL,
           };
-          commit("setUser", newUser);
+          commit(actions.setUser, newUser);
         })
         .catch(error => {
-          commit("setLoading", false);
-          commit("setError", error);
+          commit(actions.setLoading, false);
+          commit(actions.setError, error);
         });
     },
+
     logout({ commit }) {
       firebase
         .auth()
         .signOut()
         .then(() => {
-          commit("setUser", null);
-          router.push('/');
+          commit(actions.setUser, null);
+          router.push(routes.startNow);
         });
     }
   },
