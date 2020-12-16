@@ -7,8 +7,8 @@ export const routes = {
   recoverPasswordCode: '/recover-password/:code',
 
   home: '/home',
-  tvShows: '/tv-shows/:id',
-  movies: '/movies/:id',
+  tvShows: '/tv-shows',
+  movies: '/movies',
   popular: '/popular',
   myList: '/my-list',
 };

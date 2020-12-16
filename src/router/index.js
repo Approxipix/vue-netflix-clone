@@ -61,7 +61,7 @@ const router = new Router({
       },
     },
     {
-      path: routes.movies,
+      path: `${routes.movies}/:id` ,
       name: 'Movies',
       component: Movies,
       meta: {
@@ -69,7 +69,7 @@ const router = new Router({
       },
     },
     {
-      path: routes.tvShows,
+      path: `${routes.tvShows}/:id`,
       name: 'TVShows',
       component: TVShows,
       meta: {
