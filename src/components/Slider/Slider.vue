@@ -9,7 +9,7 @@
         @mouseout="handleMouseOut('track')"
       >
         <div
-          class="['Slider__slides', 'Slider__slides--cloned', settings.extraClass]"
+          :class="['Slider__slides', 'Slider__slides--cloned', settings.extraClass]"
           ref="slidesClonedBefore"
           v-if="clonedSlides"
         >
@@ -26,7 +26,7 @@
           <slot />
         </div>
       </div>
-      <div class="Slider__loading" v-show="loading">
+      <div class="Slider__loading" v-if="loading">
         <Spinner />
       </div>
     </div>
@@ -51,7 +51,7 @@
           @mouseover="handleMouseOver('dot')"
           @mouseout="handleMouseOut('dot')"
         >
-          <button@click="goTo(n - 1), restartAutoPlay()" type="button">{{n}}</button>
+          <button @click="goTo(n - 1), restartAutoPlay()" type="button">{{n}}</button>
         </li>
       </ul>
 
