@@ -3,26 +3,28 @@ import App from "./App.vue";
 import router from "./router/index";
 import { store } from "./store/index";
 import * as firebase from 'firebase';
-import './index.scss'
-import './helpers/fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { actions } from "./helpers/constants";
+import './index.scss';
+import './helpers/fontawesome';
 import './helpers/axiosInterceptors';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 let app = '';
 const config = {
-  apiKey: "AIzaSyCZCvqieLgtEPMmn8jdl79Aandh35MH_GQ",
-  authDomain: "vue-netflix-clone.firebaseapp.com",
-  databaseURL: "https://vue-netflix-clone.firebaseio.com",
-  projectId: "vue-netflix-clone",
-  storageBucket: "vue-netflix-clone.appspot.com",
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
 };
 
 firebase.initializeApp(config);
 
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged(user => {
   if (!app) {
     app = new Vue({
       router,
@@ -30,7 +32,7 @@ firebase.auth().onAuthStateChanged((user) => {
       render: h => h(App),
       created() {
         if (user) {
-          this.$store.dispatch('autoSignIn', user)
+          this.$store.dispatch(actions.autoSignIn, user);
         }
       }
     }).$mount('#app');

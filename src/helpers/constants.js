@@ -16,6 +16,7 @@ export const routes = {
 export const actions = {
   signUp: 'signUp',
   signIn: 'signIn',
+  autoSignIn: 'autoSignIn',
   signInGoogle: 'signInGoogle',
   signInFacebook: 'signInFacebook',
   signInAnonymously: 'signInAnonymously',
