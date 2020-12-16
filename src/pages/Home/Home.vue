@@ -2,7 +2,7 @@
   <div class="Home">
     <div class="Home__main-slider">
       <Slider ref="slider" :options="options">
-        <div :key="index" :class="`slide--${index}`" v-for="(movie,index) in movieList">
+        <div :key="index" :class="`slide--${index}`" v-for="(movie, index) in movieList">
           <MovieDetails :movie="movie" />
         </div>
       </Slider>
@@ -23,11 +23,6 @@
   import MovieSlider from '../../components/MovieSlider/MovieSlider.vue';
 
   export default {
-    components: {
-      Slider,
-      MovieDetails,
-      MovieSlider,
-    },
     data () {
       return {
         movieList: [],
@@ -44,7 +39,12 @@
     computed: {
       user() {
         return this.$store.getters.user;
-      }
+      },
+    },
+    components: {
+      Slider,
+      MovieDetails,
+      MovieSlider,
     },
     mounted() {
       this.$refs.slider.toggleLoading();

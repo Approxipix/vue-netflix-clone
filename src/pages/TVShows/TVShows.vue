@@ -1,6 +1,8 @@
 <template>
   <div class="page__content">
-    <h1>TV Shows <span v-if="categoryTitle">({{categoryTitle}})</span></h1>
+    <h1>
+      TV Shows <span v-if="categoryTitle">({{categoryTitle}})</span>
+    </h1>
     <MovieList :request-url="'discover/tv?with_genres=' + movieGenresId" />
   </div>
 </template>
@@ -9,19 +11,11 @@
   import MovieList from '../../components/MovieList/MovieList';
 
   export default {
-    components: {
-      MovieList,
-    },
     data() {
       return {
         categoryTitle: '',
         movieGenresId: +this.$route.params.id,
       };
-    },
-    mounted() {
-      if (this.$store.getters.genres) {
-        this.setTitle();
-      }
     },
     computed: {
       query() {
@@ -30,6 +24,9 @@
       genres() {
         return this.$store.getters.genres;
       },
+    },
+    components: {
+      MovieList,
     },
     watch: {
       query(value) {
@@ -48,6 +45,11 @@
       setTitle () {
         this.categoryTitle = this.genres.tv.find(({ id }) => id === this.movieGenresId).name;
       },
+    },
+    mounted() {
+      if (this.$store.getters.genres) {
+        this.setTitle();
+      }
     },
   }
 </script>
