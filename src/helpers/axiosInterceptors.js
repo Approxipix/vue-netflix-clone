@@ -1,6 +1,6 @@
 import axios from "axios/index";
 
-axios.interceptors.request.use(config => {
+axios.interceptors.request.use(function (config) {
   if (config.method === 'get') {
     if (typeof config.params !== 'undefined') {
       config.params = Object.assign(config.params, {
@@ -13,6 +13,6 @@ axios.interceptors.request.use(config => {
     }
   }
   return config;
-}, error => {
+}, function (error) {
   return Promise.reject(error);
 });
