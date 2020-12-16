@@ -29,4 +29,7 @@ export const actions = {
   setConfiguration: 'setConfiguration',
   setError: 'setError',
   clearError: 'clearError',
+  setMyList: 'setMyList',
+  addMovieToMyList: 'addMovieToMyList',
+  removeMovieFromMyList: 'removeMovieFromMyList',
 };

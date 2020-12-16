@@ -5,14 +5,14 @@
   }
 
   &__btns {
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
     margin-bottom: .5rem;
     .btn {
       width: 100%;
       padding: .9rem;
       font-weight: bold;
       &:not(:last-child) {
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
       }
     }
   }

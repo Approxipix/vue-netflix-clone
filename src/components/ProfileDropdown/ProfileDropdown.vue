@@ -6,8 +6,11 @@
     </div>
     <div class="dropdown">
       <div class="dropdown__list">
+        <button class="btn dropdown__btn">
+          Manage Profiles
+        </button>
         <button class="btn dropdown__btn" v-on:click="onLogOut">
-          Logout
+          Sign out of Netflix
         </button>
       </div>
     </div>

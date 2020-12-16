@@ -185,11 +185,11 @@ export default {
           commit(actions.setUser, null);
           router.push(routes.startNow);
         });
-    }
+    },
   },
   getters: {
     user(state) {
       return state.user;
-    }
-  }
+    },
+  },
 };

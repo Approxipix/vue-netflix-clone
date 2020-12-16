@@ -63,16 +63,19 @@
   &__btn {
     display: flex;
     align-items: center;
-    padding: 0 !important;
+    padding: .5rem 1.5rem .5rem 1rem !important;
     font-weight: bold;
     text-transform: uppercase;
+    border: 1px solid $white;
+    &:hover {
+      color: $black;
+      background-color: $white;
+    }
     &-icon {
       margin-right: .25rem;
       padding: 2px;
       width: 20px;
       height: 20px;
-      border-radius: 50%;
-      border: 2px solid $white;
     }
   }
 }

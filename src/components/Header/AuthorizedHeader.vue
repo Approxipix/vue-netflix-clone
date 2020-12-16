@@ -51,7 +51,7 @@
           { title: 'Home', link: routes.home },
           { title: 'TV Shows', link: routes.tvShows, nav: [] },
           { title: 'Movies', link: routes.movies, nav: [] },
-          { title: 'Popular', link: routes.popular },
+          { title: 'New & Popular', link: routes.popular },
           { title: 'My List', link: routes.myList },
         ],
       };

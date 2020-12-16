@@ -13,8 +13,11 @@
         <p class="MovieDetails__description">
           Genres: <span class="MovieDetails__description--white">{{ movieGenres }}</span>
         </p>
-        <button type="button" class="btn MovieDetails__btn">
+        <button v-if="!isMovieInMyList" type="button" class="btn MovieDetails__btn" @click="addMovieToMyList">
           <font-awesome-icon :icon="['fas', 'plus']" class="MovieDetails__btn-icon" fixed-width /> My List
+        </button>
+        <button v-else type="button" class="btn MovieDetails__btn" @click="removeMovieFromMyList">
+           <font-awesome-icon :icon="['fas', 'minus']" class="MovieDetails__btn-icon" fixed-width /> My List
         </button>
       </div>
     </div>
@@ -25,6 +28,7 @@
 <script>
   import MovieLabels from '../MovieLabels/MovieLabels';
   import getImageUrl from '../../helpers/getImageUrl';
+  import { actions } from '../../helpers/constants';
 
   export default {
     name: 'MovieDetails',
@@ -46,6 +50,9 @@
           .map(({ name }) => name)
           .join(', ');
       },
+      isMovieInMyList() {
+        return this.$store.getters.myList.find(({ id }) => id === this.movie.id);
+      },
     },
     components: {
       MovieLabels,
@@ -53,6 +60,16 @@
     methods: {
       getBackgroundImageUrl(url, size) {
         return `url(${getImageUrl(url, size, 'backdrop')})`;
+      },
+      addMovieToMyList() {
+        this.$store.dispatch(actions.addMovieToMyList, { 
+          movie: this.movie,
+        });
+      },
+      removeMovieFromMyList() {
+        this.$store.dispatch(actions.removeMovieFromMyList, { 
+          movie: this.movie,
+        });
       },
     },
   }

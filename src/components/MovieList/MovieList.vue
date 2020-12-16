@@ -14,7 +14,12 @@
         <button type="button" class="btn--close" @click="unselectMovie" />
       </div>
     </div>
-    <Pagination :current-page="currentPage" :total-pages="totalPages" @load="loadMovies" />
+    <Pagination
+      v-if="totalPages"
+      :current-page="currentPage"
+      :total-pages="totalPages"
+      @load="loadMovies"
+    />
   </div>
 </template>
 
@@ -28,10 +33,11 @@
     name: 'MovieList',
     props: {
       requestUrl: String,
+      initialMovieList: Array,
     },
     data () {
       return {
-        movieList: [],
+        movieList: this.initialMovieList || [],
         selectedMovie: null,
         currentPage: 1,
         totalPages: 0,
@@ -48,6 +54,12 @@
           this.loadMovies();
         }
       },
+      initialMovieList(value) {
+        if (value !== null && value !== undefined) {
+          this.movieList = value;
+          this.selectedMovie = null;
+        }
+      },
     },
     methods: {
       loadMovies() {
@@ -56,6 +68,8 @@
         for (let key in query) {
           params[key] = decodeURIComponent(query[key]);
         }
+
+        if (!this.requestUrl) return;
 
         axios.get(`https://api.themoviedb.org/3/${this.requestUrl}`, { params })
           .then(response => {

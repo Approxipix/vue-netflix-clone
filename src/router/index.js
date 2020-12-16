@@ -11,6 +11,7 @@ import Home from '@/pages/Home/Home';
 import Movies from '@/pages/Movies/Movies';
 import TVShows from '@/pages/TVShows/TVShows';
 import Popular from '@/pages/Popular/Popular';
+import MyList from '@/pages/MyList/MyList';
 import { routes } from '../helpers/constants';
 
 Vue.use(Router);
@@ -80,6 +81,14 @@ const router = new Router({
       path: routes.popular,
       name: 'Popular',
       component: Popular,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: routes.myList,
+      name: 'My List',
+      component: MyList,
       meta: {
         requiresAuth: true,
       },

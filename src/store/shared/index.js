@@ -31,7 +31,7 @@ export default {
     },
 
     setError({ commit }, payload) {
-      commit(actions.setErro, payload);
+      commit(actions.setError, payload);
     },
 
     setConfiguration({ commit }) {
@@ -55,7 +55,7 @@ export default {
           genres.movies = response.data.genres;
         })
         .catch(error => {
-          commit(actions.setErro, error);
+          commit(actions.setError, error);
         });
 
       await axios.get('https://api.themoviedb.org/3/genre/tv/list')
@@ -81,6 +81,6 @@ export default {
     },
     error(state) {
       return state.error;
-    }
+    },
   },
 };

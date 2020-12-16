@@ -30,17 +30,13 @@
     position: absolute;
     top: 0;
     z-index: $z-index-header;
-    display: grid;
-    grid-column-gap: 1rem;
-    grid-template-areas:
-      "logo actions";
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 1rem 1.5rem;
     @include lg {
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-areas:
-        ". logo actions";
+      padding: 2rem 3rem;
     }
   }
 
@@ -53,9 +49,6 @@
       @include sm {
         width: 10.5rem;
         height: 2.9rem;
-      }
-      @include lg {
-        margin: 0 auto;
       }
     }
   }
