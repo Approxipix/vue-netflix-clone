@@ -102,6 +102,7 @@
   import { routes, actions } from '../../helpers/constants';
 
   export default {
+    name: 'SignUp',
     data() {
       return {
         email: '',

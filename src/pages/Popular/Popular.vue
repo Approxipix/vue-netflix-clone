@@ -9,6 +9,7 @@
   import MovieList from '../../components/MovieList/MovieList';
 
   export default {
+    name: 'Popular',
     components: {
       MovieList,
     },

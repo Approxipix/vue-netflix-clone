@@ -14,6 +14,7 @@
   import { routes } from '../../helpers/constants';
 
   export default {
+    name: 'StartNow',
     data() {
       return {
         signInRoute: routes.signIn,

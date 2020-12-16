@@ -87,6 +87,7 @@
   import { routes, actions } from "../../helpers/constants";
 
   export default {
+    name: 'RecoverPasswordForm',
     data() {
       return {
         password: '',

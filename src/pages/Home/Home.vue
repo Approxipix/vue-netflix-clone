@@ -23,6 +23,7 @@
   import MovieSlider from '../../components/MovieSlider/MovieSlider.vue';
 
   export default {
+    name: 'Home',
     data () {
       return {
         movieList: [],

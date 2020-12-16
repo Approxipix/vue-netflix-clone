@@ -111,6 +111,7 @@
   import { routes, actions } from '../../helpers/constants';
 
   export default {
+    name: 'SignIn',
     data() {
       return {
         email: '',

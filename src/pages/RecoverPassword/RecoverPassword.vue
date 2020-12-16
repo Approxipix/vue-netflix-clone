@@ -38,6 +38,7 @@
   import { actions } from "../../helpers/constants";
 
   export default {
+    name: 'RecoverPassword',
     data() {
       return {
         email: '',

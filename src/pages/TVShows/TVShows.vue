@@ -11,6 +11,7 @@
   import MovieList from '../../components/MovieList/MovieList';
 
   export default {
+    name: 'TVShows',
     data() {
       return {
         categoryTitle: '',

@@ -18,6 +18,7 @@
   import { actions } from '../../helpers/constants';
 
   export default {
+    name: 'ProfileDropdown',
     data() {
       return {
         isDropdownOpened: false,
