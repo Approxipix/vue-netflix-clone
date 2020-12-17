@@ -12,6 +12,7 @@ import Movies from '@/pages/Movies/Movies';
 import TVShows from '@/pages/TVShows/TVShows';
 import Popular from '@/pages/Popular/Popular';
 import MyList from '@/pages/MyList/MyList';
+import Search from '@/pages/Search/Search';
 import { routes } from '../helpers/constants';
 
 Vue.use(Router);
@@ -89,6 +90,14 @@ const router = new Router({
       path: routes.myList,
       name: 'My List',
       component: MyList,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: `${routes.search}/:search`,
+      name: 'Search',
+      component: Search,
       meta: {
         requiresAuth: true,
       },

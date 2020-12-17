@@ -126,7 +126,40 @@
   &__actions {
     grid-area: actions;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-end;
+  }
+
+  &__search {
+    margin-right: .5rem;
+    padding: .35em .5rem;
+    &--active,
+    &:focus-within {
+      margin-right: 1rem;
+      background-color: $black;
+      border: 1px solid $white;
+      .Header__search-icon {
+        margin-right: .75rem;
+      }
+      .Header__search-input {
+        width: 16rem;
+      }
+    }
+    &-icon {
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    &-input {
+      width: 0;
+      color: $white;
+      font-size: .875rem;
+      line-height: 1rem;
+      background-color: transparent;
+      border: 0;
+      &--active,
+      &:focus {
+        width: 16rem;
+      }
+    }
   }
 }

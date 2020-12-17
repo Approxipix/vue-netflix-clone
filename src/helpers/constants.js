@@ -11,6 +11,7 @@ export const routes = {
   movies: '/movies',
   popular: '/popular',
   myList: '/my-list',
+  search: '/search',
 };
 
 export const actions = {

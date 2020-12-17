@@ -1,10 +1,8 @@
 <template>
   <div class="page__content">
-    <h1>
-      My List
-    </h1>
-    <MovieList v-if="myMovieList.length !==0" :initial-movie-list="myMovieList" />
-    <div v-else class="MyList__empty">
+    <h1>My List</h1>
+    <MovieList v-if="myMovieList.length !== 0" :initial-movie-list="myMovieList" />
+    <div v-else class="MovieList__empty">
       You haven't added any titles  to your list yet.
     </div>
   </div>
@@ -25,8 +23,3 @@
     },
   }
 </script>
-
-<style lang="scss">
-  @import 'MyList';
-</style>
-

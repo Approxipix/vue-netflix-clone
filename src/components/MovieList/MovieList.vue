@@ -1,13 +1,18 @@
 <template>
   <div>
-    <div class="MovieList">
-      <MovieListItem
-        v-for="(movie, index) in movieList"
-        :key="index"
-        :movie="movie"
-        v-on:select-movie="selectMovie"
-      />
-    </div>
+    <transition name="fade">
+      <div class="MovieList" v-if="movieList.length !== 0">
+        <MovieListItem
+          v-for="(movie, index) in movieList"
+          :key="index"
+          :movie="movie"
+          v-on:select-movie="selectMovie"
+        />
+      </div>
+      <div v-else class="MovieList__empty">
+        {{ emptyTitle }}
+      </div>
+    </transition>
     <transition name="fade">
       <div v-if="selectedMovie" class="MovieList__details-backdrop" @click="unselectMovie">
         <div @click.stop class="MovieList__details">
@@ -35,10 +40,12 @@
     name: 'MovieList',
     props: {
       requestUrl: String,
+      emptyListTitle: String,
       initialMovieList: Array,
     },
     data () {
       return {
+        emptyTitle: this.emptyListTitle || 'No data here',
         movieList: this.initialMovieList || [],
         selectedMovie: null,
         currentPage: 1,

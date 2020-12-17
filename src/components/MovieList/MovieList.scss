@@ -22,4 +22,13 @@
       align-items: center;
     }
   }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    font-size: 1.5rem;
+    color: $gray600;
+  }
 }

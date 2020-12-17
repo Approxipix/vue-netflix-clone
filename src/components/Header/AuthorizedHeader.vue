@@ -25,6 +25,18 @@
     </nav>
 
     <div class="Header__actions">
+      <div class="Header__search" :class="[{ 'Header__search--active': search }, 'Header__search']">
+        <label>
+          <font-awesome-icon :icon="['fas', 'search']" class="Header__search-icon" />
+          <input
+            name="search"
+            type="text"
+            placeholder="Titles, characters, geners"
+            v-model="search"
+            class="Header__search-input"
+          >
+        </label>
+      </div>
       <ProfileDropdown />
       <button :class="[{ 'hamburger--active': isMenuOpened }, 'hamburger', 'button']" v-on:click="toggleSidebar">
         <span />
@@ -38,12 +50,14 @@
 <script>
   import ProfileDropdown from '../ProfileDropdown/ProfileDropdown';
   import NetflixLogo from '../../assets/images/netflix.svg';
+  import debounce from '../../helpers/debounce';
   import { routes, actions } from '../../helpers/constants';
 
   export default {
     name: 'AuthorizedHeader',
     data() {
       return {
+        search: '',
         isScrolled: false,
         isMenuOpened: false,
         homeRoute: routes.home,
@@ -75,6 +89,9 @@
           });
         }
       },
+      search: debounce(function(value) {
+        this.$router.push(`${routes.search}/${value}`);
+      }, 600),
     },
     methods: {
       handleScroll() {
@@ -92,6 +109,7 @@
       window.addEventListener('scroll', this.handleScroll);
     },
     mounted() {
+      this.search = this.$route.params.search;
       return this.$store.dispatch(actions.setGenres);
     },
     destroyed() {

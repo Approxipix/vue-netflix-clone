@@ -10,6 +10,7 @@ import {
   faPlayCircle,
   faPlusCircle,
   faInfoCircle,
+  faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -29,4 +30,5 @@ library.add(
   faPlayCircle,
   faPlusCircle,
   faInfoCircle,
+  faSearch,
 );
