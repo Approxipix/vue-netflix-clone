@@ -63,6 +63,11 @@
           this.loadMovies();
         }
       },
+      emptyListTitle(value) {
+        if (value !== null && value !== undefined) {
+          this.emptyTitle = value;
+        }
+      },
       initialMovieList(value) {
         if (value !== null && value !== undefined) {
           this.movieList = value;
