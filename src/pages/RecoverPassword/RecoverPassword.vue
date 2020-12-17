@@ -4,7 +4,9 @@
       <h1 class="tile__title">
         Recover Password
       </h1>
-      <div v-bind:is="error" v-if="error" class="form__error-message" />
+      <transition name="fade-height">
+        <div v-bind:is="error" v-if="error" class="form__error-message" />
+      </transition>
       <form @submit.prevent="onRecoverPassword">
         <div class="input__wrapper">
           <input

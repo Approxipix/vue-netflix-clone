@@ -5,7 +5,9 @@
         <h1 class="tile__title">
           Sign In
         </h1>
-        <div v-bind:is="error" v-if="error" class="form__error-message" />
+        <transition name="fade-height">
+          <div v-bind:is="error" v-if="error" class="form__error-message" />
+        </transition>
         <form @submit.prevent="onSignIn" class="form">
           <div class="form__field">
             <div class="input__wrapper">

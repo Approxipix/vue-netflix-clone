@@ -23,6 +23,7 @@
         name: String,
         title: String,
         overview: String,
+        poster_path: String,
       },
     },
     components: {

@@ -8,12 +8,14 @@
         v-on:select-movie="selectMovie"
       />
     </div>
-    <div v-if="selectedMovie" class="MovieList__details-backdrop" @click="unselectMovie">
-      <div @click.stop class="MovieList__details">
-        <MovieDetails :movie="selectedMovie" />
-        <button type="button" class="btn--close" @click="unselectMovie" />
+    <transition name="fade">
+      <div v-if="selectedMovie" class="MovieList__details-backdrop" @click="unselectMovie">
+        <div @click.stop class="MovieList__details">
+          <MovieDetails :movie="selectedMovie" />
+          <button type="button" class="btn--close" @click="unselectMovie" />
+        </div>
       </div>
-    </div>
+    </transition>
     <Pagination
       v-if="totalPages"
       :current-page="currentPage"

@@ -7,11 +7,13 @@
           <MovieSliderItem :movie="movie" v-on:select-movie="selectMovie" />
         </div>
       </Slider>
-      <div v-if="selectedMovie" class="MovieSlider__details">
-        <div @click.stop>
-          <MovieDetails :movie="selectedMovie" />
+      <transition name='fade-in-up'>
+        <div v-if="selectedMovie" class="MovieSlider__details">
+          <div @click.stop>
+            <MovieDetails :movie="selectedMovie" />
+          </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
