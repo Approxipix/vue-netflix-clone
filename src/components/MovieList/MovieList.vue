@@ -64,9 +64,7 @@
         }
       },
       emptyListTitle(value) {
-        if (value !== null && value !== undefined) {
-          this.emptyTitle = value;
-        }
+        this.emptyTitle = value;
       },
       initialMovieList(value) {
         if (value !== null && value !== undefined) {
