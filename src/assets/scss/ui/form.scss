@@ -76,7 +76,10 @@
     }
     &-text {
       position: relative;
-      font-size: .725rem;
+      font-size: .6rem;
+      @include sm {
+        font-size: .725rem;
+      }
       &:after {
         content: '';
         position: absolute;

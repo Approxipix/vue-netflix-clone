@@ -11,6 +11,7 @@
         <div v-if="selectedMovie" class="MovieSlider__details">
           <div @click.stop>
             <MovieDetails :movie="selectedMovie" />
+            <button type="button" class="btn--close" @click="unselectMovie" />
           </div>
         </div>
       </transition>
@@ -40,9 +41,16 @@
           navButtons: false,
           slidesToShow: 5,
           slidesToScroll: 5,
+          mobileFirst: false,
           speed: 300,
           timing: 'ease-in-out',
           extraClass: 'MovieSlider',
+          responsive: [
+            { breakpoint: 576, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+            { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } },
+            { breakpoint: 992, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+            { breakpoint: 1100, settings: { slidesToShow: 4, slidesToScroll: 4 } },
+          ],
         }
       };
     },

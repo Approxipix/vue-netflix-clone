@@ -6,16 +6,26 @@
   top: 0;
   z-index: $z-index-header;
   display: grid;
-  grid-column-gap: 2rem;
+  grid-gap: 1rem;
   grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "logo nav actions";
+    "logo nav actions"
+    "search search search";
   align-items: center;
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem;
   transition: background-color .2s ease-in-out;
+  @include sm {
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas:
+      "logo nav search actions";
+    padding: 1rem 2rem;
+  }
+
   .hamburger {
+    z-index: $z-index-nav;
     display: block;
+    margin-left: .5rem;
     transform: scale(.8);
     @include md {
       display: none;
@@ -45,6 +55,9 @@
     width: 5.6rem;
     height: 1.7rem;
     fill: $red;
+    @include sm {
+      margin-right: 1rem;
+    }
     &--un {
       @include sm {
         width: 10.5rem;
@@ -59,6 +72,7 @@
     top: 0;
     right: 0;
     bottom: 0;
+    z-index: $z-index-modal;
     width: 0;
     display: flex;
     justify-content: center;
@@ -66,6 +80,7 @@
     transition: width .6s ease-in-out;
     overflow: hidden;
     @include md {
+      z-index: unset;
       position: relative;
       display: block;
       background-color: transparent;
@@ -106,8 +121,10 @@
       }
       &:hover {
         .dropdown {
-          visibility: visible;
-          opacity: 1;
+          @include md {
+            visibility: visible;
+            opacity: 1;
+          }
         }
       }
     }
@@ -131,34 +148,56 @@
   }
 
   &__search {
-    margin-right: .5rem;
-    padding: .35em .5rem;
+    grid-area: search;
+    padding: .35rem .5rem;
+    background-color: $black;
+    border: 1px solid $white;
+    @include sm {
+      background-color: transparent;
+      border: none;
+    }
     &--active,
     &:focus-within {
-      margin-right: 1rem;
       background-color: $black;
       border: 1px solid $white;
       .Header__search-icon {
         margin-right: .75rem;
       }
       .Header__search-input {
-        width: 16rem;
+        @include sm {
+          width: 13rem;
+        }
+        @include md {
+          width: 16rem;
+        }
       }
     }
     &-icon {
+      margin-right: .75rem;
       font-size: 1.1rem;
       cursor: pointer;
+      @include sm {
+        margin-right: 0;
+      }
     }
     &-input {
-      width: 0;
+      width: 100%;
       color: $white;
       font-size: .875rem;
       line-height: 1rem;
       background-color: transparent;
       border: 0;
+      @include sm {
+        width: 0;
+      }
       &--active,
       &:focus {
-        width: 16rem;
+        @include sm {
+          width: 13rem;
+        }
+        @include md {
+          width: 16rem;
+        }
       }
     }
   }

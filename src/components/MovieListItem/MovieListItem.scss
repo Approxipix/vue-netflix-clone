@@ -1,12 +1,16 @@
+@import "../../assets/scss/helpers/breakpoints";
 @import "../../assets/scss/helpers/variables";
 
 .MovieListItem {
-  height: 28rem;
-  background-position: right top;
+  height: 24rem;
+  background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   transition: all .3s ease-in-out;
   cursor: pointer;
+  @include sm {
+    height: 28rem;
+  }
 
   &:hover {
     transform: scale(1.05);
@@ -22,9 +26,12 @@
     height: 100%;
     width: 100%;
     padding: 1rem;
-    opacity: 0;
+    opacity: 1;
     transition: all .3s ease-in-out;
     background-color: rgba(0, 0, 0, .7);
+    @include sm {
+      opacity: 0;
+    }
   }
 
   &__title {

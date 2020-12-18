@@ -1,3 +1,5 @@
+@import "../../assets/scss/helpers/breakpoints";
+
 .Slider {
   height: 100%;
   &__list {
@@ -40,7 +42,7 @@
   }
   &__dot button {
     display: block;
-    width: 2rem;
+    width: 1rem;
     height: .25rem;
     margin: 0 .25rem;
     font-size: 0;
@@ -50,6 +52,9 @@
     background-color: #555555;
     transition-duration: 0.3s;
     cursor: pointer;
+    @include sm {
+      width: 2rem; 
+    }
   }
   &__loading {
     position: absolute;

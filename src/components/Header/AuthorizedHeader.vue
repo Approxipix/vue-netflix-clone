@@ -24,19 +24,20 @@
       </ul>
     </nav>
 
+    <div class="Header__search" :class="[{ 'Header__search--active': search }, 'Header__search']">
+      <label class="flex-jc">
+        <font-awesome-icon :icon="['fas', 'search']" class="Header__search-icon" />
+        <input
+          name="search"
+          type="text"
+          placeholder="Titles, characters, geners"
+          v-model="search"
+          class="Header__search-input"
+        >
+      </label>
+    </div>
+
     <div class="Header__actions">
-      <div class="Header__search" :class="[{ 'Header__search--active': search }, 'Header__search']">
-        <label>
-          <font-awesome-icon :icon="['fas', 'search']" class="Header__search-icon" />
-          <input
-            name="search"
-            type="text"
-            placeholder="Titles, characters, geners"
-            v-model="search"
-            class="Header__search-input"
-          >
-        </label>
-      </div>
       <ProfileDropdown />
       <button :class="[{ 'hamburger--active': isMenuOpened }, 'hamburger', 'button']" v-on:click="toggleSidebar">
         <span />
@@ -71,6 +72,9 @@
       };
     },
     computed: {
+      path() {
+        return this.$route.path;
+      },
       genres() {
         return this.$store.getters.genres;
       },
@@ -80,6 +84,9 @@
       NetflixLogo,
     },
     watch: {
+      path() {
+        this.isMenuOpened = false;
+      },
       genres(value) {
         if (value !== null && value !== undefined) {
           this.navList = this.navList.map(item => {
@@ -96,7 +103,7 @@
     methods: {
       handleScroll() {
         const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        if (currentScrollPosition > 50) return this.isScrolled = true;
+        if (currentScrollPosition > 30) return this.isScrolled = true;
         else return this.isScrolled = false;
       },
       toggleSidebar() {
@@ -109,7 +116,9 @@
       window.addEventListener('scroll', this.handleScroll);
     },
     mounted() {
-      this.search = this.$route.params.search;
+      if (this.$route.params.search) {
+        this.search = this.$route.params.search;
+      }
       return this.$store.dispatch(actions.setGenres);
     },
     destroyed() {

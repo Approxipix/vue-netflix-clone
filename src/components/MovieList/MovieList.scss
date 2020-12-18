@@ -1,14 +1,39 @@
+@import "../../assets/scss/helpers/breakpoints";
 @import "../../assets/scss/helpers/variables";
 
 .MovieList {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 1rem;
   margin-bottom: 1rem;
+  @include sm {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include xl {
+    grid-template-columns: repeat(5, 1fr);
+  }
 
   &__details {
-    width: 80%;
-    height: 80%;
+    width: 100vw;
+    @include md {
+      width: 80%;
+      height: 80%;
+    }
+    .MovieDetails {
+      min-height: 100vh;
+      @include md {
+        min-height: 80vh;
+      }
+      @include xl {
+        background-position: 20rem top;
+      }
+    }
     &-backdrop {
       position: fixed;
       top: 0;
@@ -25,10 +50,13 @@
 
   &__empty {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: $gray600;
+    @include md {
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+      font-size: 1.5rem;
+    }
   }
 }

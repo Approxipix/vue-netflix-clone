@@ -1,3 +1,4 @@
+@import "../../assets/scss/helpers/breakpoints";
 @import "../../assets/scss/helpers/variables";
 
 $slideBorderWidth: '3px';
@@ -30,10 +31,13 @@ $slideScale: '1.2';
     flex-direction: column;
     justify-content: flex-end;
     padding: .5rem 1rem;
-    visibility: hidden;
-    opacity: 0;
+    opacity: 1;
     transition: all .3s ease-in-out;
     background-image: linear-gradient(180deg, rgba(0, 0, 0, .7) 0%, transparent);
+    @include sm {
+      opacity: 0;
+      visibility: hidden;
+    }
     &:before {
       content: '';
       position: absolute;
@@ -63,41 +67,46 @@ $slideScale: '1.2';
 
 .MovieSlider {
   padding-bottom: 1rem;
-  &:hover {
-    > * {
-      transform: scale(1) translate3d(-2rem, 0, 0) !important;
-      opacity: .3;
+  @include sm {
+    &:hover {
+      > * {
+        transform: scale(1) translate3d(-2rem, 0, 0) !important;
+        opacity: .3;
+      }
     }
   }
 
   .Slider__slide {
-    padding: 1rem 0;
+    padding: .5rem 0;
     transition: all .3s ease-in-out !important;
-    &:hover {
-      transform: scale(#{$slideScale}) !important;
-      opacity: 1;
-      .MovieSliderItem__details {
-        visibility: visible;
+    @include sm {
+      padding: 1rem 0;
+      &:hover {
+        transform: scale(#{$slideScale}) !important;
         opacity: 1;
+        .MovieSliderItem__details {
+          visibility: visible;
+          opacity: 1;
+        }
+        ~ .Slider__slide {
+          transform: translate3d(2rem, 0 , 0) !important;
+        }
       }
-      ~ .Slider__slide {
-        transform: translate3d(2rem, 0 , 0) !important;
+      &--active {
+        &:hover {
+          padding-left: 1.6rem;
+        }
+        .MovieSliderItem {
+          margin-left: 0;
+        }
       }
-    }
-    &--active {
-      &:hover {
-        padding-left: 1.6rem;
-      }
-      .MovieSliderItem {
-        margin-left: 0;
-      }
-    }
-    &--last {
-      &:hover {
-        padding-right: 1.6rem;
-      }
-      .MovieSliderItem {
-        margin-right: 0;
+      &--last {
+        &:hover {
+          padding-right: 1.6rem;
+        }
+        .MovieSliderItem {
+          margin-right: 0;
+        }
       }
     }
   }
@@ -107,11 +116,19 @@ $slideScale: '1.2';
   z-index: 55;
 
   .MovieSlider {
+    @include sm {
+      > * {
+        transform: scale(1) translate3d(-2rem, 0, 0) !important;
+      }
+    }
+
     .Slider__slide--selected {
       .MovieSliderItem {
-        border-color: $white;
-        &:after {
-          content: '';
+        @include sm {
+          border-color: $white;
+          &:after {
+            content: '';
+          }
         }
         .MovieSliderItem__details {
           visibility: visible;
@@ -121,10 +138,6 @@ $slideScale: '1.2';
           }
         }
       }
-    }
-
-    > * {
-      transform: scale(1) translate3d(-2rem, 0, 0) !important;
     }
   }
 

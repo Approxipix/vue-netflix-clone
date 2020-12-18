@@ -1,24 +1,32 @@
+@import "../../assets/scss/helpers/breakpoints";
 @import './src/assets/scss/helpers/variables';
 
 .Pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  @include sm {
+    padding: 1rem;
+  }
 
   &__list {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $gray700;
-    border-radius: 2rem;
     overflow: hidden;
+    @include sm {
+      border-radius: 2rem;
+      background: $gray700;
+    }
   }
 
   &__btn {
-    padding: .5rem 1rem;
+    padding: .5rem;
     color: $gray500;
     transition: all .2s ease-in-out;
+    @include sm {
+      padding: .5rem 1rem;
+    }
     &--active {
       background: $red;
       color: $white;
@@ -34,7 +42,11 @@
   }
 
   &__dots {
+    display: none;
     margin: 0 .5rem;
     color: $gray500;
+    @include sm {
+      display: inline-flex;
+    }
   }
 }

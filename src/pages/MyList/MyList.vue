@@ -1,6 +1,8 @@
 <template>
   <div class="page__content">
-    <h1>My List</h1>
+    <h1 class="page__title">
+      My List
+      </h1>
     <MovieList v-if="myMovieList.length !== 0" :initial-movie-list="myMovieList" />
     <div v-else class="MovieList__empty">
       You haven't added any titles  to your list yet.

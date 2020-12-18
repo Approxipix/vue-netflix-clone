@@ -1,6 +1,8 @@
 <template>
   <div class="page__content">
-    <h1>Search</h1>
+    <h1 class="page__title">
+      Search
+    </h1>
     <MovieList 
       :request-url="'search/movie?query=' + search"
       :empty-list-title="'Your search for &quot;' + search + '&quot; did not have any matches.'"

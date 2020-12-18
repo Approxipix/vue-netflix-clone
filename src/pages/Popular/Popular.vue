@@ -1,6 +1,8 @@
 <template>
   <div class="page__content">
-    <h1>Popular</h1>
+    <h1 class="page__title">
+      Popular
+      </h1>
     <MovieList request-url="movie/popular" />
   </div>
 </template>

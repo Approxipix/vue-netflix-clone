@@ -4,9 +4,12 @@ html {
 
 body {
 	font-family: Helvetica, Arial ,sans-serif;
-	font-size: 16px;
+	font-size: 14px;
 	color: $white;
-	background: $gray900;
+  background: $gray900;
+  @include md {
+    font-size: 16px;;
+  }
 }
 
 button {
@@ -96,5 +99,18 @@ ul {
 .page__content {
   display: flex;
   flex-direction: column;
-  padding: 3rem 2rem 0;
+  padding: 6rem 1rem 0;
+  @include sm {
+    padding: 3rem 2rem 0;
+  }
+}
+
+.page__title {
+  font-size: 1.25rem;
+  @include sm {
+    font-size: 1.5rem;
+  }
+  @include md {
+    font-size: 2rem;
+  }
 }

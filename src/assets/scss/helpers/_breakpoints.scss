@@ -26,7 +26,7 @@ $screens: (sm: $screen-sm, md: $screen-md, lg: $screen-lg, xl: $screen-xl);
 
 /* Extra large devices */
 @mixin xl {
-  @media (min-width: map-get($screens, lg) + 'px') {
+  @media (min-width: map-get($screens, xl) + 'px') {
     @content;
   }
 }

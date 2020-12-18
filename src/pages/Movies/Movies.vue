@@ -1,6 +1,6 @@
 <template>
   <div class="page__content">
-    <h1>
+    <h1 class="page__title">
       Movies <span v-if="categoryTitle">({{ categoryTitle }})</span>
     </h1>
     <MovieList :request-url="'discover/movie?with_genres=' + movieGenresId" />

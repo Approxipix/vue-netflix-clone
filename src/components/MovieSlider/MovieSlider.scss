@@ -1,16 +1,33 @@
+@import "../../assets/scss/helpers/breakpoints";
+@import "../../assets/scss/helpers/variables";
+
 .MovieSlider {
   &__wrapper {
-    padding: 0 2rem;
-    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+    @include sm {
+      padding: 0 2rem;
+      margin-bottom: 1.5rem;
+    }
   }
+
   &__details {
-    position: absolute;
-    top: calc(100% - 1rem);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     min-height: 20rem;
-    z-index: 50;
-    .MovieDetails {
-      min-height: 30rem;
+    z-index: $z-index-modal;
+    
+    @include sm {
+      position: absolute;
+      top: calc(100% - 1rem);
+      z-index: $z-index-dropdown;
+      .MovieDetails {
+        min-height: 30rem;
+      }
+      .btn--close {
+        display: none;
+      }
     }
   }
 }
