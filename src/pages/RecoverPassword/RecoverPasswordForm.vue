@@ -75,9 +75,9 @@
           </button>
         </div>
       </form>
-    </div>
-    <div class="Spinner__overflow" v-if="loading">
-      <Spinner />
+      <div class="Spinner__overflow" v-if="loading">
+        <Spinner />
+      </div>
     </div>
   </div>
 </template>

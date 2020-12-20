@@ -26,9 +26,6 @@
           <slot />
         </div>
       </div>
-      <div class="Slider__loading" v-if="loading">
-        <Spinner />
-      </div>
     </div>
 
     <div class="Slider__actions" v-if="!settings.disabled && (settings.navButtons || settings.dots)">
@@ -65,6 +62,10 @@
       >
         <slot name="nextButton">→</slot>
       </button>
+    </div>
+
+    <div class="Spinner__overflow" v-if="loading">
+      <Spinner />
     </div>
   </div>
 </template>

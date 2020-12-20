@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="MovieList__wrapper">
     <transition name="fade">
       <div class="MovieList" v-if="movieList.length !== 0">
         <MovieListItem
@@ -9,7 +9,7 @@
           v-on:select-movie="selectMovie"
         />
       </div>
-      <div v-else class="MovieList__empty">
+      <div v-else-if="!loading && movieList.length === 0" class="MovieList__empty">
         {{ emptyTitle }}
       </div>
     </transition>
@@ -21,6 +21,9 @@
         </div>
       </div>
     </transition>
+    <div v-if="loading" class="Spinner__overflow">
+      <Spinner />
+    </div>
     <Pagination
       v-if="totalPages"
       :current-page="currentPage"
@@ -35,6 +38,7 @@
   import MovieListItem from '../MovieListItem/MovieListItem';
   import MovieDetails from '../MovieDetails/MovieDetails';
   import Pagination from '../Pagination/Pagination';
+  import Spinner from '../Spinner/Spinner';
 
   export default {
     name: 'MovieList',
@@ -50,12 +54,14 @@
         selectedMovie: null,
         currentPage: 1,
         totalPages: 0,
+        loading: false,
       };
     },
     components: {
       MovieListItem,
       MovieDetails,
       Pagination,
+      Spinner,
     },
     watch: {
       requestUrl(value) {
@@ -74,6 +80,9 @@
       },
     },
     methods: {
+      toggleLoading() {
+        this.loading = !this.loading;
+      },
       loadMovies() {
         let { query } = this.$route;
         const params = { page: 1 };
@@ -83,6 +92,7 @@
 
         if (!this.requestUrl) return;
 
+        this.toggleLoading();
         axios.get(`https://api.themoviedb.org/3/${this.requestUrl}`, { params })
           .then(response => {
             this.movieList = response.data.results;
@@ -94,7 +104,10 @@
           })
           .catch(error => {
             console.log(error);
-          });
+          })
+          .finally(() => {
+          this.toggleLoading();
+        });
       },
       selectMovie(movie) {
         this.selectedMovie = movie;

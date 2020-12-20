@@ -6,6 +6,7 @@
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 1rem;
   margin-bottom: 1rem;
+  
   @include sm {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -17,6 +18,14 @@
   }
   @include xl {
     grid-template-columns: repeat(5, 1fr);
+  }
+
+  &__wrapper {
+    position: relative;
+    min-height: 75vh;
+    .Spinner__overflow {
+      background-color: transparent;
+    }
   }
 
   &__details {

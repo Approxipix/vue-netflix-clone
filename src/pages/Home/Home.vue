@@ -56,10 +56,12 @@
         })
         .then(() => {
           this.$refs.slider.reload();
-          this.$refs.slider.toggleLoading();
         })
         .catch(error => {
           console.log(error);
+        })
+        .finally(() => {
+          this.$refs.slider.toggleLoading();
         });
     },
   };
