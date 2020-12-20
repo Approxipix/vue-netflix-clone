@@ -9,8 +9,11 @@ A simple [Netflix](https://netflix.com) clone based on Vue powered by [Firebase]
 ## Live Demo
 Link: https://vue-netfilx-clone.web.app
 
-![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example2.jpg?raw=true)
-![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example1.jpg?raw=true)
+![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example1.png?raw=true)
+![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example2.png?raw=true)
+![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example3.png?raw=true)
+![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example4.png?raw=true)
+
 
 ## Tech stack
 * [Vue](https://github.com/vuejs/vue)
@@ -52,7 +55,7 @@ VUE_APP_FIREBASE_MESSAGING_SENDER_ID='<YOUR-MESSAGING-SENDER-ID>'
 VUE_APP_FIREBASE_APP_ID='<YOUR-APP-ID>'
 ```
   5) In order for this application to work you will have to obtain an API key from [TMDB](https://www.themoviedb.org/settings/api). Once you get the key, you must insert it in a file `.env.local`
-```
+```js
 VUE_APP_TMDB_API_KEY='<YOUR-API-KEY>'
 ```
 
