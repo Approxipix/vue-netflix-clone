@@ -7,7 +7,7 @@ A simple [Netflix](https://netflix.com) clone based on Vue powered by [Firebase]
 </div>
 
 ## Live Demo
-Link: https://vue-netfilx-clone.web.app
+Link: https://approxipix.github.io/vue-netflix-clone
 
 ![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example1.png?raw=true)
 ![example](https://github.com/Approxipix/vue-netflix-clone/blob/master/example2.png?raw=true)
