@@ -19,7 +19,6 @@ Vue.use(Router);
 
 const router = new Router({
   mode: "history",
-  base: '/vue-netflix-clone/',
   routes: [
     {
       path: '*',
