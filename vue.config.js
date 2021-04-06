@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/vue-netflix-clone/',
   runtimeCompiler: true,
   productionSourceMap: false,
   chainWebpack: config => {
