@@ -2,8 +2,10 @@
 A simple [Netflix](https://netflix.com) clone based on Vue powered by [Firebase](https://firebase.google.com).
 <div>
   <img alt="Last Commit" src="https://img.shields.io/github/last-commit/approxipix/vue-netflix-clone?color=2b9348">
-  <a href="https://david-dm.org/approxipix/vue-netflix-clone"><img src="https://david-dm.org/approxipix/vue-netflix-clone/status.svg" alt="Dependencies status" /></a>
-  <a href="https://github.com/approxipix/vue-netflix-clone/blob/master/LICENSE"><img src="https://img.shields.io/github/license/elangosundar/awesome-README-templates?color=2b9348" alt="License Badge"/></a>
+  <img src="https://img.shields.io/depfu/approxipix/vue-netflix-clone" alt="Dependencies status" />
+  <a href="https://github.com/approxipix/vue-netflix-clone/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/elangosundar/awesome-README-templates?color=2b9348" alt="License Badge"/>
+  </a>
 </div>
 
 ## Live Demo
